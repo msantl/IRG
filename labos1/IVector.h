@@ -3,31 +3,32 @@
 
 class IVector {
   public:
-    virtual double get(int);
-    virtual IVector set(int, double);
-    virtual int getDimension();
-    virtual IVector copy();
-    virtual IVector copyPart(int);
-    virtual IVector newInstance(int);
-    virtual IVector add(IVector);
-    virtual IVector nAdd(IVector);
-    virtual IVector sub(IVector);
-    virtual IVector nSub(IVector);
-    virtual IVector scalarMultiply(double);
-    virtual IVector nScalarMultiply(double);
-    virtual double norm();
-    virtual IVector normalize();
-    virtual IVector nNormalize();
-    virtual double cosine(IVector);
-    virtual double scalarProduct(IVector);
-    virtual IVector nVectorProduct(IVector);
-    virtual IVector nFromHomogenus();
+    virtual double get(int) = 0;
+    virtual IVector* set(int, double) = 0;
+    virtual int getDimension() = 0;
+    virtual IVector* copy() = 0;
+    virtual IVector* copyPart(int) = 0;
+    virtual IVector* newInstance(int) = 0;
+    virtual IVector* add(IVector*) = 0;
+    virtual IVector* nAdd(IVector*) = 0;
+    virtual IVector* sub(IVector*) = 0;
+    virtual IVector* nSub(IVector*) = 0;
+    virtual IVector* scalarMultiply(double) = 0;
+    virtual IVector* nScalarMultiply(double) = 0;
+    virtual double norm() = 0;
+    virtual IVector* normalize() = 0;
+    virtual IVector* nNormalize() = 0;
+    virtual double cosine(IVector*) = 0;
+    virtual double scalarProduct(IVector*) = 0;
+    virtual IVector* nVectorProduct(IVector*) = 0;
+    virtual IVector* nFromHomogenus() = 0;
     /*
-     * virtual IMatrix toRowMatrix(bool);
-     * virtual IMatrix toColumnMatrix(bool);
+     * virtual IMatrix toRowMatrix(bool) = 0;
+     * virtual IMatrix toColumnMatrix(bool) = 0;
      */
-    virtual double* toArray();
+    virtual double* toArray() = 0;
 
+    virtual void toString() = 0;
 };
 
 #endif
