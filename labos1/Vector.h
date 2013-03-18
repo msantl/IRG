@@ -1,6 +1,8 @@
 #ifndef VECTOR_H
 #define VECTOR_H
 
+#include "IRG.h"
+
 #include "AbstractVector.h"
 #include <vector>
 #include <string>
@@ -9,7 +11,7 @@ class Vector : public AbstractVector {
   private:
     std::vector< double > *elements;
     int dimension;
-    bool readOnly, freeOnDelete;
+    bool readOnly;
   public:
     Vector();
     ~Vector();

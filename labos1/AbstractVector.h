@@ -1,11 +1,13 @@
 #ifndef ABSTRACTVECTOR_H
 #define ABSTRACTVECTOR_H
 
+#include "IRG.h"
+
 #include "IVector.h"
+#include "IMatrix.h"
+#include <string>
 
-#define EPS 1e-9
-
-class AbstractVector : public IVector {
+class AbstractVector : virtual public IVector {
   public:
     AbstractVector();
 
@@ -24,13 +26,13 @@ class AbstractVector : public IVector {
     double scalarProduct(IVector*);
     IVector* nVectorProduct(IVector*);
     IVector* nFromHomogenus();
-    /*
-     * IMatrix toRowMatrix(bool);
-     * IMatrix toColumnMatrix(bool);
-     */
+
+    IMatrix* toRowMatrix(bool);
+    IMatrix* toColumnMatrix(bool);
+
     double* toArray();
 
-    void toString();
+    std::string toString();
 };
 
 #endif

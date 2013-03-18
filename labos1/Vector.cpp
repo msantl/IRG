@@ -6,20 +6,16 @@
 using namespace std;
 
 Vector::Vector() {
-  freeOnDelete = false;
   readOnly = false;
   dimension = 0;
 }
 
 Vector::~Vector() {
-  if (freeOnDelete) {
-    delete elements;
-  }
+  delete elements;
 }
 
 Vector::Vector(vector< double > *el) {
   readOnly = false;
-  freeOnDelete = true;
 
   dimension = el->size();
 
@@ -31,11 +27,10 @@ Vector::Vector(vector< double > *el) {
 
 Vector::Vector(bool readOnlyFlag, bool freeOnDeleteFlag, vector< double > *el) {
   readOnly = readOnlyFlag;
-  freeOnDelete = freeOnDeleteFlag;
 
   dimension = el->size();
 
-  if (!freeOnDelete) {
+  if (!freeOnDeleteFlag) {
     elements = new vector< double >(dimension);
     for (int i = 0; i < dimension; ++i) {
       elements->push_back(el->at(i));

@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <cassert>
 #include <cmath>
+#include <string>
 
 using namespace std;
 
@@ -127,13 +128,23 @@ IVector* AbstractVector::nFromHomogenus() {
   double koef = this->get(this->getDimension() - 1);
   assert(fabs(koef) > EPS); // divide by zero
 
-  IVector* v1 = this->copy();
+  IVector* v1 = this->newInstance(this->getDimension() - 1);
 
   for (int i = 0; i < v1->getDimension(); ++i) {
     v1->set(i, v1->get(i) / koef);
   }
 
   return v1;
+}
+
+IMatrix* AbstractVector::toRowMatrix(bool isView) {
+  // TODO
+  return NULL;
+}
+
+IMatrix* AbstractVector::toColumnMatrix(bool isView) {
+  // TODO
+  return NULL;
 }
 
 double* AbstractVector::toArray() {
@@ -145,10 +156,15 @@ double* AbstractVector::toArray() {
   return res;
 }
 
-void AbstractVector::toString() {
-  printf("[");
+string AbstractVector::toString() {
+  string res;
+  char buff[20];
+
   for (int i = 0; i < this->getDimension(); ++i) {
-    printf("%3lf, ", this->get(i));
+    sprintf(buff, "%3lf, ", this->get(i));
+
+    res = res + string(buff);
   }
-  printf("]\n");
+
+  return "[" + res + "]";
 }

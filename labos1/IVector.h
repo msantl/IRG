@@ -1,6 +1,11 @@
 #ifndef IVECTOR_H
 #define IVECTOR_H
 
+#include "IRG.h"
+
+#include "IMatrix.h"
+#include <string>
+
 class IVector {
   public:
     virtual double get(int) = 0;
@@ -22,13 +27,11 @@ class IVector {
     virtual double scalarProduct(IVector*) = 0;
     virtual IVector* nVectorProduct(IVector*) = 0;
     virtual IVector* nFromHomogenus() = 0;
-    /*
-     * virtual IMatrix toRowMatrix(bool) = 0;
-     * virtual IMatrix toColumnMatrix(bool) = 0;
-     */
+    virtual IMatrix* toRowMatrix(bool) = 0;
+    virtual IMatrix* toColumnMatrix(bool) = 0;
     virtual double* toArray() = 0;
 
-    virtual void toString() = 0;
+    virtual std::string toString() = 0;
 };
 
 #endif
