@@ -1,5 +1,5 @@
 PROJECT = labos1
-SOURCE = IVector.cpp AbstractVector.cpp Vector.cpp IMatrix.cpp AbstractMatrix.cpp Matrix.cpp MatrixSubMatrixView.cpp MatrixTransposeView.cpp vjezba1.cpp
+SOURCE = IVector.cpp AbstractVector.cpp Vector.cpp IMatrix.cpp AbstractMatrix.cpp Matrix.cpp MatrixSubMatrixView.cpp MatrixTransposeView.cpp MatrixVectorView.cpp VectorMatrixView.cpp vjezba1.cpp
 
 CC = g++
 CFLAGS = -Wall -g -c
