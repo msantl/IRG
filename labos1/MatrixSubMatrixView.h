@@ -11,7 +11,14 @@ class MatrixSubMatrixView : public AbstractMatrix {
   private:
     std::vector< int > rowIndexes;
     std::vector< int > colIndexes;
+
+    IMatrix* view;
+
+    MatrixSubMatrixView(IMatrix*, std::vector< int >, std::vector< int >);
+
   public:
+    MatrixSubMatrixView();
+    MatrixSubMatrixView(IMatrix*, int, int);
 
     int getRowsCount();
     int getColsCount();

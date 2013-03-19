@@ -13,6 +13,9 @@ class MatrixSubMatrixView;
 class AbstractMatrix;
 class Matrix;
 
+class MatrixSubMatrixView;
+class MatrixTransposeView;
+
 class MatrixVectorView;
 class VectorMatrixView;
 

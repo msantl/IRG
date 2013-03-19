@@ -1,4 +1,7 @@
 #include "AbstractVector.h"
+
+#include "MatrixVectorView.h"
+
 #include <algorithm>
 #include <cassert>
 #include <cmath>
@@ -138,13 +141,19 @@ IVector* AbstractVector::nFromHomogenus() {
 }
 
 IMatrix* AbstractVector::toRowMatrix(bool isView) {
-  // TODO
-  return NULL;
+  if (isView) {
+    return new MatrixVectorView(this, 1);
+  } else {
+    return new MatrixVectorView(this->copy(), 1);
+  }
 }
 
 IMatrix* AbstractVector::toColumnMatrix(bool isView) {
-  // TODO
-  return NULL;
+  if (isView) {
+    return new MatrixVectorView(this, 0);
+  } else {
+    return new MatrixVectorView(this->copy(), 0);
+  }
 }
 
 double* AbstractVector::toArray() {

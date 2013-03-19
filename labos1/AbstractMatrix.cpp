@@ -1,6 +1,9 @@
 #include "AbstractMatrix.h"
 #include "MatrixTransposeView.h"
 #include "MatrixSubMatrixView.h"
+
+#include "VectorMatrixView.h"
+
 #include <string>
 #include <cassert>
 #include <cmath>
@@ -10,8 +13,14 @@ using namespace std;
 AbstractMatrix::AbstractMatrix() {}
 
 IMatrix* AbstractMatrix::nTranspose(bool liveView) {
-  // TODO
-  return NULL;
+  IMatrix* m1;
+  if (liveView) {
+    m1 = new MatrixTransposeView(this);
+  } else {
+    m1 = new MatrixTransposeView(this->copy());
+  }
+
+  return m1;
 }
 
 IMatrix* AbstractMatrix::add(IMatrix* m2) {
@@ -71,7 +80,6 @@ IMatrix* AbstractMatrix::nMultiply(IMatrix* m2) {
 
 double AbstractMatrix::determinant() {
   assert(this->getRowsCount() == this->getColsCount());
-  assert(this->getRowsCount() < 4); // sve vise je previse
 
   double res = 0;
 
@@ -91,15 +99,24 @@ double AbstractMatrix::determinant() {
           - this->get(0, 0) * this->get(1, 2) * this->get(2, 1);
       break;
     default:
-      res = 0;
+      for (int j = 0; j < this->getColsCount(); ++j) {
+        res += this->subMatrix(0, j, 1)->determinant() * this->get(0, j) * ((j & 1) ? -1 : 1);
+      }
+      break;
   }
 
   return res;
 }
 
 IMatrix* AbstractMatrix::subMatrix(int i, int j, bool liveView) {
-  // TODO
-  return NULL;
+  IMatrix *m1;
+
+  if (liveView) {
+    m1 = new MatrixSubMatrixView(this, i, j);
+  } else {
+    m1 = new MatrixSubMatrixView(this->copy(), i, j);
+  }
+  return m1;
 }
 
 IMatrix* AbstractMatrix::nInvert() {
@@ -140,6 +157,11 @@ string AbstractMatrix::toString() {
 }
 
 IVector* AbstractMatrix::toVector(bool liveView) {
-  // TODO
-  return NULL;
+  IVector *v1;
+  if (liveView) {
+    v1 = new VectorMatrixView(this);
+  } else {
+    v1 = new VectorMatrixView(this->copy());
+  }
+  return v1;
 }
