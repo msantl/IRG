@@ -31,7 +31,7 @@ Vector::Vector(bool readOnlyFlag, bool freeOnDeleteFlag, vector< double > *el) {
   dimension = el->size();
 
   if (!freeOnDeleteFlag) {
-    elements = new vector< double >(dimension);
+    elements = new vector< double >();
     for (int i = 0; i < dimension; ++i) {
       elements->push_back(el->at(i));
     }
@@ -63,7 +63,8 @@ int Vector::getDimension() {
 }
 
 IVector* Vector::copy() {
-  return new Vector(*this);
+  IVector* v1 = new Vector(readOnly, 0, elements);
+  return v1;
 }
 
 IVector* Vector::newInstance(int d) {

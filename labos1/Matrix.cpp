@@ -57,19 +57,12 @@ IMatrix* Matrix::set(int i, int j, double v) {
 }
 
 IMatrix* Matrix::copy() {
-  return new Matrix(*this);
+  IMatrix* m1 = new Matrix(rows, cols, this->elements, 0);
+  return m1;
 }
 
 IMatrix* Matrix::newInstance(int r, int c) {
-  vector< vector< double > > *el = new vector< vector< double > > (r, vector< double >(c));
-
-  for (int i = 0; i < r; ++i) {
-    for (int j = 0; j < c; ++j) {
-      el->at(i).at(j) = 0;
-    }
-  }
-
-  return new Matrix(r, c, el, 1);
+  return new Matrix(r, c);
 }
 
 Matrix* Matrix::parseSimple(string str) {
@@ -90,6 +83,8 @@ Matrix* Matrix::parseSimple(string str) {
       }
     }
 
+    c = max(c, (int)row.size());
+
     if (i == len || str.at(i) == '|') {
       el->push_back(row);
       row.clear();
@@ -97,7 +92,6 @@ Matrix* Matrix::parseSimple(string str) {
       curr = curr + str.at(i);
     }
 
-    c = max(c, (int)row.size());
     r = max(r, (int)el->size());
   }
 

@@ -63,13 +63,14 @@ IMatrix* AbstractMatrix::nMultiply(IMatrix* m2) {
   assert(this->getColsCount() == m2->getRowsCount());
 
   IMatrix* m1 = this->newInstance(this->getRowsCount(), m2->getColsCount());
+
   double suma;
 
   for (int i = 0; i < this->getRowsCount(); ++i) {
     for (int j = 0; j < m2->getColsCount(); ++j) {
       suma = 0;
       for (int k = 0; k < this->getColsCount(); ++k) {
-        suma += this->get(i , k) * m2->get(k, j);
+        suma += this->get(i, k) * m2->get(k, j);
       }
       m1->set(i, j, suma);
     }
@@ -122,7 +123,17 @@ IMatrix* AbstractMatrix::subMatrix(int i, int j, bool liveView) {
 IMatrix* AbstractMatrix::nInvert() {
   double det = this->determinant();
   assert(fabs(det) > EPS);
-  return NULL;
+
+  IMatrix* m1 = this->newInstance(this->getRowsCount(), this->getColsCount());
+
+  for (int i = 0; i < this->getRowsCount(); ++i) {
+    for (int j = 0; j < this->getColsCount(); ++j) {
+      double val = this->subMatrix(i, j, 1)->determinant() / det;
+      m1->set(i, j, (i + j) % 2 ? -val : val);
+    }
+  }
+
+  return m1->nTranspose(1);
 }
 
 double* AbstractMatrix::toArray() {
@@ -153,7 +164,7 @@ string AbstractMatrix::toString() {
     str = str + "[" + row + "]" + '\n';
   }
 
-  return str;
+  return "---------------\n"+ str + "----------------\n";
 }
 
 IVector* AbstractMatrix::toVector(bool liveView) {

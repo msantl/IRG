@@ -29,7 +29,7 @@ IMatrix* MatrixTransposeView::copy() {
 }
 
 IMatrix* MatrixTransposeView::newInstance(int i, int j) {
-  return new MatrixTransposeView(view->newInstance(view->getRowsCount(), view->getColsCount()));
+  return new MatrixTransposeView(view->newInstance(j, i));
 }
 
 double* MatrixTransposeView::toArray() {

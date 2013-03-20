@@ -51,8 +51,7 @@ IVector* AbstractVector::sub(IVector* v2) {
 IVector* AbstractVector::nSub(IVector* v2) {
   IVector* v1 = this->copy();
 
-  v1->sub(v2);
-  return v1;
+  return v1->sub(v2);
 }
 
 IVector* AbstractVector::scalarMultiply(double a) {
