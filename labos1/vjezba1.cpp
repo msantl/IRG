@@ -62,8 +62,9 @@ void zad3() {
 void zad4() {
   // izracun reflektiranog vektora
   // n = (3 3), m = (2 3) => r = (3 2)
-  string parse;
+  string parse, dummy;
 
+  getline(cin, dummy);
   printf("Unesite vektor n: \n");
   getline(cin, parse);
 
@@ -135,8 +136,10 @@ void demo2() {
 }
 
 void demo3() {
+  string dummy;
   string parseA, parseB, parseC, parseT;
 
+  getline(cin, dummy);
   printf("Vektor A:\n");
   getline(cin, parseA);
   printf("Vektor B:\n");
@@ -173,25 +176,29 @@ void demo3() {
 }
 
 int main(int argc, char** argv) {
-  int zad;  scanf("%d", &zad);
-  switch(zad){
-    case 1:
-      zad1(); break;
-    case 2:
-      zad2(); break;
-    case 3:
-      zad3(); break;
-    case 4:
-      zad4(); break;
-    case 5:
-      demo1(); break;
-    case 6:
-      demo2(); break;
-    case 7:
-      demo3(); break;
-    default:
-      printf("Unesite broj [1-7] ovisno o zadatku");
-      break;
+  int zad = 8;
+  while(zad > 0) {
+    switch(zad){
+      case 1:
+        zad1(); break;
+      case 2:
+        zad2(); break;
+      case 3:
+        zad3(); break;
+      case 4:
+        zad4(); break;
+      case 5:
+        demo1(); break;
+      case 6:
+        demo2(); break;
+      case 7:
+        demo3(); break;
+      default:
+        printf("Unesite broj [1-7] ovisno o zadatku, 0 za izlaz\n");
+        break;
+    }
+
+    cin >> zad;
   }
 
   return 0;

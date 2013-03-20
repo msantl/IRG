@@ -38,7 +38,8 @@ int VectorMatrixView::getDimension() {
 }
 
 IVector* VectorMatrixView::copy() {
-  return new VectorMatrixView(*this);
+  IVector* v1 = new VectorMatrixView(view->copy());
+  return v1;
 }
 
 IVector* VectorMatrixView::newInstance(int d) {

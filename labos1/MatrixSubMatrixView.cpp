@@ -43,7 +43,8 @@ IMatrix* MatrixSubMatrixView::set(int i, int j, double v) {
 }
 
 IMatrix* MatrixSubMatrixView::copy() {
-  return new MatrixSubMatrixView(*this);
+  IMatrix* m1 = new MatrixSubMatrixView(view->copy(), rowIndexes, colIndexes);
+  return m1;
 }
 
 IMatrix* MatrixSubMatrixView::newInstance(int i, int j) {

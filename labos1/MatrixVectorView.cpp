@@ -50,7 +50,8 @@ IMatrix* MatrixVectorView::set(int i, int j, double v) {
 }
 
 IMatrix* MatrixVectorView::copy() {
-  return new MatrixVectorView(*this);
+  IMatrix* m1 = new MatrixVectorView(view->copy(), asRowMatrix);
+  return m1;
 }
 
 IMatrix* MatrixVectorView::newInstance(int r, int c) {

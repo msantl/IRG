@@ -25,7 +25,8 @@ IMatrix* MatrixTransposeView::set(int i, int j, double v) {
 }
 
 IMatrix* MatrixTransposeView::copy() {
-  return new MatrixTransposeView(*this);
+  IMatrix* m1 = new MatrixTransposeView(view->copy());
+  return m1;
 }
 
 IMatrix* MatrixTransposeView::newInstance(int i, int j) {
