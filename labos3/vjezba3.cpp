@@ -228,19 +228,22 @@ void renderScene() {
     glColor3f(1.0f, 0.0f, 0.0f);
     glBegin(GL_LINES);
     for (vector< segment_t* >::iterator it = segmenti.begin(); it != segmenti.end(); ++it) {
+      // calculate the normal vector for the given segment
       int x1 = (*it)->getStart()->getX();
       int x2 = (*it)->getEnd()->getX();
 
       int y1 = (*it)->getStart()->getY();
       int y2 = (*it)->getEnd()->getY();
 
+      // rotate it by -90
       int a = - (y2 - y1);
       int b = x2 - x1;
 
       double dist = sqrt(a*a + b*b);
-      double d_x = - (a / dist) * OFFSET;
+      double d_x = (a / dist) * OFFSET;
       double d_y = (b / dist) * OFFSET;
 
+      // helping lines with offset
       glVertex2i((*it)->getStart()->getX() + (int)d_x, (*it)->getStart()->getY() + (int)d_y);
       glVertex2i((*it)->getEnd()->getX() + (int)d_x, (*it)->getEnd()->getY() + (int)d_y);
     }
