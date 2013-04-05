@@ -110,7 +110,7 @@ int provjeriPoziciju(vector< vertex_t* > p, point_t* t) {
     }
   }
 
-  if (na != 0) {
+  if ((iznad == 0 || ispod == 0) && na != 0) {
     return 0;
   } else if (iznad == 0) {
     return 1;
