@@ -72,6 +72,24 @@ class vertex_t {
 // kraj bloka s pomocnim klasama
 
 int provjeriKonveksnost(vector< vertex_t* > p) {
+  int iznad = 0, ispod = 0;
+  int n = p.size();
+
+  for (int i = 0; i < n; ++i) {
+    int j = (i + 2) % n;
+
+    int r = p[i]->getBrid()->getA() * p[j]->getVrh()->getX() +
+            p[i]->getBrid()->getB() * p[j]->getVrh()->getY() +
+            p[i]->getBrid()->getC();
+
+    if (r > 0) {
+      iznad += 1;
+    } else {
+      ispod += 1;
+    }
+  }
+
+  return (iznad == 0) || (ispod == 0);
 }
 
 int provjeriPoziciju(vector< vertex_t* > p, point_t* t) {
@@ -220,7 +238,6 @@ class state_t {
 
     void addTocka(point_t *p) {
       if (activePoint != NULL) {
-        // provjeri ako tocka p sacinjava konveksni mongokut
         polygon.push_back(new vertex_t(activePoint, new edge_t(activePoint, p), activePoint->getY() < p->getY()));
       }
 
@@ -350,9 +367,25 @@ void renderScene() {
 }
 
 void keyboardPressed(unsigned char key, int x, int y) {
+  vector< vertex_t* > poly;
+  point_t* tocka;
+
   switch(key) {
     case 'k':
-      STATE.toggleKonveksnost();
+      if (STATE.getKonveksnost() == 0 && STATE.getPolygonSize() >= 2) {
+        poly = STATE.getPolygon();
+        tocka = poly[0]->getVrh();
+
+        poly.push_back(new vertex_t(STATE.getActivePoint(), new edge_t(STATE.getActivePoint(), tocka), STATE.getActivePoint()->getY() < tocka->getY()));
+
+        if (provjeriKonveksnost(poly) == 1) {
+          STATE.toggleKonveksnost();
+        } else {
+          printf("Zadan poligon nije konveksan!\n");
+        }
+      } else {
+        STATE.toggleKonveksnost();
+      }
       break;
     case 'p':
       STATE.togglePopunjavanje();
@@ -379,11 +412,25 @@ void mouseClick(int button, int status, int x, int y) {
   // ako je pritisnut lijevi gumb misa
   if (button == GLUT_LEFT_BUTTON && status == GLUT_DOWN) {
     int status;
+    vector< vertex_t* > poly;
     point_t* tocka = new point_t(x, y);
 
     switch(STATE.getStanje()) {
       case 1:
-        STATE.addTocka(tocka);
+        if (STATE.getKonveksnost() == 1 && STATE.getPolygonSize() >= 2) {
+          poly = STATE.getPolygon();
+
+          poly.push_back(new vertex_t(STATE.getActivePoint(), new edge_t(STATE.getActivePoint(), tocka), STATE.getActivePoint()->getY() < tocka->getY()));
+          poly.push_back(new vertex_t(tocka, new edge_t(tocka, poly[0]->getVrh()), tocka->getY() < poly[0]->getVrh()->getY()));
+
+          if (provjeriKonveksnost(poly) == 1) {
+            STATE.addTocka(tocka);
+          } else {
+            printf("Zadana tocka narusaa konveksnost poligona!\n");
+          }
+        } else {
+          STATE.addTocka(tocka);
+        }
         break;
       case 2:
         // provjeri ako je tocka unutaar poligona i ispisi rezultat
