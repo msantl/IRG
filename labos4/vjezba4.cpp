@@ -26,7 +26,7 @@ class point_t {
 
     void setX(int _x) {x = _x;}
     void setY(int _y) {y = _y;}
-} kursor;
+} *kursor;
 
 class edge_t {
   private:
@@ -72,58 +72,16 @@ class vertex_t {
 // kraj bloka s pomocnim klasama
 
 int provjeriKonveksnost(vector< vertex_t* > p) {
-  int iznad = 0, ispod = 0;
-  int n = p.size();
-
-  for (int i = 0; i < n; ++i) {
-    int j = (i - 2 + n) % n;
-    int r = p[j]->getBrid()->getA() * p[i]->getVrh()->getX() +
-            p[j]->getBrid()->getB() * p[i]->getVrh()->getY() +
-            p[j]->getBrid()->getC();
-
-    if (r > 0) {
-      iznad++;
-    } else if (r < 0) {
-      ispod++;
-    }
-  }
-
-  return (iznad == 0) || (ispod == 0);
 }
 
 int provjeriPoziciju(vector< vertex_t* > p, point_t* t) {
-  int iznad = 0, ispod = 0, na = 0;
-  int n = p.size();
-
-  for (int i = 0; i < n; ++i) {
-    int r = p[i]->getBrid()->getA() * t->getX() +
-            p[i]->getBrid()->getB() * t->getY() +
-            p[i]->getBrid()->getC();
-
-    if (r > 0) {
-      iznad++;
-    } else if (r < 0) {
-      ispod++;
-    } else {
-      na++;
-    }
-  }
-
-  if (na != 0) {
-    return 0;
-  } else if (iznad == 0) {
-    return 1;
-  } else if (ispod == 0) {
-    return 1;
-  } else {
-    return -1;
-  }
 }
 
 void popuniPoligon(vector< vertex_t* > p) {
-  int n = p.size();
   int xmin, xmax, ymin, ymax;
   double L, D, x;
+
+  int n = p.size();
 
   xmin = xmax = p[0]->getVrh()->getX();
   ymin = ymax = p[0]->getVrh()->getY();
@@ -135,14 +93,15 @@ void popuniPoligon(vector< vertex_t* > p) {
   }
 
   glBegin(GL_LINES);
+
   for (int y = ymin; y <= ymax; ++y) {
     L = xmin; D = xmax;
+
     for (int i = 0; i < n; ++i) {
-      int j = (i - 1 + n) % n;
-      if (p[j]->getBrid()->getA() == 0) {
-        // ako je brid vodoravan
-        if (p[j]->getVrh()->getY() == y) {
-          if (p[j]->getVrh()->getX() < p[i]->getVrh()->getX()) {
+      int j = (i + 1) % n;
+      if (p[i]->getBrid()->getA() == 0) {
+        if (p[i]->getVrh()->getY() == y) {
+          if (p[i]->getVrh()->getX() > p[j]->getVrh()->getX()) {
             L = p[j]->getVrh()->getX();
             D = p[i]->getVrh()->getX();
           } else {
@@ -152,11 +111,17 @@ void popuniPoligon(vector< vertex_t* > p) {
           break;
         }
       } else {
-        // regularan brid
-        x = (-p[j]->getBrid()->getB() * y - p[j]->getBrid()->getC()) /
-          (double)p[j]->getBrid()->getA();
+        // provjera ako ima sjecista koja nas zanimaju
+        int lo = p[i]->getVrh()->getY();
+        int hi = p[j]->getVrh()->getY();
 
-        if (p[j]->isLeft() == 1) {
+        if (lo > hi) {swap(lo, hi);}
+
+        if (lo > y || hi < y) continue;
+
+        x = -(y * p[i]->getBrid()->getB() + p[i]->getBrid()->getC()) / (double)p[i]->getBrid()->getA();
+
+        if (p[i]->isLeft() == 1) {
           L = max(L, x);
         } else {
           D = min(D, x);
@@ -166,9 +131,7 @@ void popuniPoligon(vector< vertex_t* > p) {
 
     glVertex2i((int)L, y);
     glVertex2i((int)D, y);
-
   }
-
   glEnd();
 
   return;
@@ -198,6 +161,10 @@ class state_t {
       return polygon;
     }
 
+    int getPolygonSize() {
+      return polygon.size();
+    }
+
     void toggleStanje() {
       if (stanje == 2) {
         // obrisi sve podatke o poligonu
@@ -208,12 +175,9 @@ class state_t {
         this->setPopunjavanje(0);
         this->setKonveksnost(0);
       } else if (stanje == 1 && polygon.size() > 1) {
-        // spremi i zadnju tocku
-        point_t *p = polygon[0]->getVrh();
-        edge_t *e = new edge_t(activePoint, p);
-        int lijevi = activePoint->getY() < p->getY();
-
-        polygon.push_back(new vertex_t(activePoint, e, lijevi));
+        // spremi zadnju tocku
+        point_t* p = polygon[0]->getVrh();
+        polygon.push_back(new vertex_t(activePoint, new edge_t(activePoint, p), activePoint->getY() < p->getY()));
       }
 
       // toggle stanje
@@ -226,19 +190,6 @@ class state_t {
 
       if (konveksnost == 0 && polygon.size() > 1) {
         // provjeri ako sve tocke do sad cine konveksni poligon
-        vector< vertex_t* > poly = polygon;
-        point_t *p = polygon[0]->getVrh();
-        edge_t *e = new edge_t(activePoint, p);
-        int lijevi = activePoint->getY() < p->getY();
-
-        poly.push_back(new vertex_t(activePoint, e, lijevi));
-
-        // ako zelimo ukljuciti provjeru konveksnosti a trenutni poligon nije
-        // konveksan nemoj dopustiti ukljucivanje
-        if (provjeriKonveksnost(poly) == 0) {
-          printf("Poligon nije konveksan, ne mogu ukljuciti opciju!\n");
-          return;
-        }
       }
 
       // toggle konveksnost
@@ -269,26 +220,8 @@ class state_t {
 
     void addTocka(point_t *p) {
       if (activePoint != NULL) {
-        // dodaj proslu tocku
-        edge_t *e = new edge_t(activePoint, p);
-        int lijevi = activePoint->getY() < p->getY();
-
-        polygon.push_back(new vertex_t(activePoint, e, lijevi));
-
-        // ako treba vrsiti provjeru
-        if (konveksnost && polygon.size() > 1) {
-          // provjeri novu tocku
-          vector< vertex_t* > poly = polygon;
-          e = new edge_t(p, polygon[0]->getVrh());
-          lijevi = p->getY() < polygon[0]->getVrh()->getY();
-
-          poly.push_back(new vertex_t(p, e, lijevi));
-
-          if (provjeriKonveksnost(poly) == 0) {
-            printf("Ne mogu dodati tocku jer poligon vise nece biti konveksan!\n");
-            return;
-          }
-        }
+        // provjeri ako tocka p sacinjava konveksni mongokut
+        polygon.push_back(new vertex_t(activePoint, new edge_t(activePoint, p), activePoint->getY() < p->getY()));
       }
 
       activePoint = p;
@@ -354,43 +287,28 @@ void reshape(int width, int height) {
 void renderScene() {
   glPointSize(1.0f);
   glColor3f(0.0f, 0.0f, 0.0f);
-
-  // temporary storage
-  vector< vertex_t* > poly = STATE.getPolygon();
-  int lijevi;
-  edge_t* e;
-  point_t *p, *kursor1, *kursor2;
+  vector< vertex_t* > poly;
 
   switch (STATE.getStanje()) {
     case 1:
        // ispuni ako treba
-      if (STATE.getPopunjavanje() == 1 && poly.size() >= 1) {
+      if (STATE.getPopunjavanje() == 1 && STATE.getPolygonSize() >= 1) {
         // activePoint -> kursor -> polygon[0]
-        kursor1 = new point_t(kursor);
-        kursor2 = new point_t(kursor);
+        poly = STATE.getPolygon();
 
-        p = STATE.getActivePoint();
-        e = new edge_t(p, kursor1);
-        lijevi = p->getY() < kursor1->getY();
-
-        poly.push_back(new vertex_t(p, e, lijevi));
-
-        p = poly[0]->getVrh();
-        e = new edge_t(kursor2, p);
-        lijevi = kursor2->getY() < p->getY();
-
-        poly.push_back(new vertex_t(kursor2, e, lijevi));
+        poly.push_back(new vertex_t(STATE.getActivePoint(), new edge_t(STATE.getActivePoint(), kursor), STATE.getActivePoint()->getY() < kursor->getY()));
+        poly.push_back(new vertex_t(kursor, new edge_t(kursor, poly[0]->getVrh()), kursor->getY() < poly[0]->getVrh()->getY()));
 
         popuniPoligon(poly);
 
-      } else {
+      } else if (STATE.getPopunjavanje() == 0) {
         // crtanje poligona
         glBegin(GL_LINE_LOOP);
         // crtanje definiranih bridova
         for (
             vector< vertex_t* >::iterator
-            it = poly.begin();
-            it != poly.end();
+            it = STATE.getPolygon().begin();
+            it != STATE.getPolygon().end();
             ++it
             ) {
           glVertex2i((*it)->getVrh()->getX(), (*it)->getVrh()->getY());
@@ -399,23 +317,23 @@ void renderScene() {
         // dodaj zadnju tocku i poziciju kursora
         if (STATE.getActivePoint() != NULL) {
           glVertex2i(STATE.getActivePoint()->getX(), STATE.getActivePoint()->getY());
-          glVertex2i(kursor.getX(), kursor.getY());
+          glVertex2i(kursor->getX(), kursor->getY());
         }
         glEnd();
       }
 
      break;
     case 2:
-      if (STATE.getPopunjavanje() == 1 && poly.size() >= 3) {
-        popuniPoligon(poly);
+      if (STATE.getPopunjavanje() == 1 && STATE.getPolygonSize() >= 3) {
+        popuniPoligon(STATE.getPolygon());
       } else {
         // crtanje poligona
         glBegin(GL_LINE_LOOP);
         // crtanje definiranih bridova
         for (
             vector< vertex_t* >::iterator
-            it = poly.begin();
-            it != poly.end();
+            it = STATE.getPolygon().begin();
+            it != STATE.getPolygon().end();
             ++it
             ) {
           glVertex2i((*it)->getVrh()->getX(), (*it)->getVrh()->getY());
@@ -450,7 +368,9 @@ void keyboardPressed(unsigned char key, int x, int y) {
 
 void mouseMoved(int x, int y) {
   if (STATE.getStanje() == 1) {
-    kursor = point_t(x, y);
+    // oslobodi memorije
+    if (kursor != NULL) delete kursor;
+    kursor = new point_t(x, y);
     glutPostRedisplay();
   }
 }
@@ -459,18 +379,15 @@ void mouseClick(int button, int status, int x, int y) {
   // ako je pritisnut lijevi gumb misa
   if (button == GLUT_LEFT_BUTTON && status == GLUT_DOWN) {
     int status;
-    vector< vertex_t* > poly;
     point_t* tocka = new point_t(x, y);
 
     switch(STATE.getStanje()) {
       case 1:
         STATE.addTocka(tocka);
-        // tocka bude obrisana prilikom destrukcije poligona
         break;
       case 2:
         // provjeri ako je tocka unutaar poligona i ispisi rezultat
-        poly = STATE.getPolygon();
-        status = provjeriPoziciju(poly, tocka);
+        status = provjeriPoziciju(STATE.getPolygon(), tocka);
         if (status == 1) {
           printf("Tocka se nalazi unutar poligona!\n");
         } else if (status == -1) {
@@ -481,6 +398,8 @@ void mouseClick(int button, int status, int x, int y) {
           warnx("Nedefiniran rezultat!\n");
         }
 
+        // oslobodi memorije
+        delete tocka;
         break;
       default:
         warnx("Nedefinirano stanje!\n");
