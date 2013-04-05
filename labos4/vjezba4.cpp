@@ -84,7 +84,7 @@ int provjeriKonveksnost(vector< vertex_t* > p) {
 
     if (r > 0) {
       iznad += 1;
-    } else {
+    } else if (r < 0) {
       ispod += 1;
     }
   }
@@ -93,6 +93,32 @@ int provjeriKonveksnost(vector< vertex_t* > p) {
 }
 
 int provjeriPoziciju(vector< vertex_t* > p, point_t* t) {
+  int iznad = 0, ispod = 0, na = 0;
+  int n = p.size();
+
+  for (int i = 0; i < n; ++i) {
+    int r = p[i]->getBrid()->getA() * t->getX() +
+            p[i]->getBrid()->getB() * t->getY() +
+            p[i]->getBrid()->getC();
+
+    if (r > 0) {
+      iznad += 1;
+    } else if (r < 0){
+      ispod += 1;
+    } else {
+      na += 1;
+    }
+  }
+
+  if (na != 0) {
+    return 0;
+  } else if (iznad == 0) {
+    return 1;
+  } else if (ispod == 0) {
+    return 1;
+  } else {
+    return -1;
+  }
 }
 
 void popuniPoligon(vector< vertex_t* > p) {
