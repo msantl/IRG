@@ -9,7 +9,7 @@ OBJECTS = ${SOURCE:.cpp=.o}
 all: $(SOURCE) $(PROJECT)
 
 $(PROJECT): $(OBJECTS)
-		$(CC) $(OBJECTS) -framework GLUT -framework OpenGL -o $(PROJECT)
+		$(CC) $(OBJECTS) -o $(PROJECT)
 
 .cpp.o:
 		$(CC) $(CFLAGS) $< -o $@
