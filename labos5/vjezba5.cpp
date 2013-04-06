@@ -250,9 +250,9 @@ void ObjectModel::normalize() {
     it != this->vrhovi.end();
     ++it
   ) {
-    (*it)->setX(2 * (*it)->getX() / M);
-    (*it)->setY(2 * (*it)->getY() / M);
-    (*it)->setZ(2 * (*it)->getZ() / M);
+    (*it)->setX(2. * (*it)->getX() / M);
+    (*it)->setY(2. * (*it)->getY() / M);
+    (*it)->setZ(2. * (*it)->getZ() / M);
   }
   return;
 }
