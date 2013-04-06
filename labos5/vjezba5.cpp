@@ -145,6 +145,12 @@ Face3D* ObjectModel::getTrokut(int x) {
   assert(x >= 0 && x < (int)trokuti.size());
   return this->trokuti[x];
 }
+vector< Vertex3D* > ObjectModel::getVrhovi() {
+  return this->vrhovi;
+}
+vector< Face3D* > ObjectModel::getTrokuti() {
+  return this->trokuti;
+}
 
 string ObjectModel::dumpToOBJ() {
   string dump = "# OBJ file dump\n";
@@ -281,7 +287,6 @@ void parseFile(char *filename, ObjectModel *obj) {
       int x = string2int(s_buff[1]) - 1;
       int y = string2int(s_buff[2]) - 1;
       int z = string2int(s_buff[3]) - 1;
-
       Face3D* trokut = new Face3D(x, y, z);
 
       // dodaj ga u model
@@ -294,7 +299,65 @@ void parseFile(char *filename, ObjectModel *obj) {
 }
 
 int odnosObjectVertex(ObjectModel* obj, Vertex3D* ver) {
-  return 0;
+  // 1 - unutar
+  // 0 - na rubu
+  // -1 izvan
+
+  int iznad = 0, ispod = 0, na = 0;
+  vector< Face3D* > trokuti = obj->getTrokuti();
+
+  for (
+    vector< Face3D* >::iterator
+    it = trokuti.begin();
+    it != trokuti.end();
+    ++it
+  ) {
+    // indeksi vrhova
+    int i = (*it)->getVrhID(0);
+    int j = (*it)->getVrhID(1);
+    int k = (*it)->getVrhID(2);
+
+    // medju rezultati
+    float v2x = obj->getVrh(j)->getX() - obj->getVrh(i)->getX();
+    float v2y = obj->getVrh(j)->getY() - obj->getVrh(i)->getY();
+    float v2z = obj->getVrh(j)->getZ() - obj->getVrh(i)->getZ();
+    float v3x = obj->getVrh(k)->getX() - obj->getVrh(i)->getX();
+    float v3y = obj->getVrh(k)->getY() - obj->getVrh(i)->getY();
+    float v3z = obj->getVrh(k)->getZ() - obj->getVrh(i)->getZ();
+    // n = (V2 - V1) x (V3 - V1)
+    // izracun komponenata normale
+    float a = v2y * v3z - v3y * v2z;
+    float b = - (v2x * v3z - v3x * v2z);
+    float c = v2x * v3y - v3x * v2y;
+
+    float d = -a * obj->getVrh(i)->getX()
+              -b * obj->getVrh(i)->getY()
+              -c * obj->getVrh(i)->getZ();
+
+    // odnos tocke i ravnine
+    float r = a * ver->getX() +
+              b * ver->getY() +
+              c * ver->getZ() +
+              d;
+
+    if (r > 0) {
+      iznad += 1;
+    } else if (r < 0) {
+      ispod += 1;
+    } else {
+      na += 1;
+    }
+  }
+
+  if ((iznad == 0 || ispod == 0) && na != 0) {
+    return 0;
+  } else if (ispod == 0) {
+    return 1;
+  } else if (iznad == 0) {
+    return 1;
+  } else {
+    return -1;
+  }
 }
 
 int main(int argc, char** argv) {
@@ -324,7 +387,7 @@ int main(int argc, char** argv) {
       int status = odnosObjectVertex(model, tocka);
 
       printf(
-        "Tocka (%.2lf %.2lf %.2lf) je %s tijela.",
+        "Tocka (%.2lf %.2lf %.2lf) je %s tijela.\n",
         x,
         y,
         z,
