@@ -340,6 +340,9 @@ int odnosObjectVertex(ObjectModel* obj, Vertex3D* ver) {
               c * ver->getZ() +
               d;
 
+#ifdef FERKO
+    printf("%lf\n", r);
+#endif
     if (r > 0) {
       iznad += 1;
     } else if (r < 0) {
