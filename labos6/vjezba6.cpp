@@ -342,7 +342,8 @@ int main(int argc, char **argv) {
 
 void display() {
   glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
-  glClear(GL_COLOR_BUFFER_BIT);
+  glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
+  glLoadIdentity();
 
   // crtaj scenu
   renderScene();
@@ -354,7 +355,6 @@ void reshape(int width, int height) {
   glViewport(0, 0, (GLsizei)width, (GLsizei)height);
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
-  glMatrixMode(GL_PROJECTION);
 }
 
 void renderScene() {
