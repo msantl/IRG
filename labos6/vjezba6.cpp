@@ -79,15 +79,10 @@ void reshape(int width, int height);
 void display();
 void renderScene();
 
-int main(int argc, char **argv) {
-  /*
-   * Vrijednosti potrebne za rad
-   */
-  double xmax = DBL_MIN, xmin = DBL_MAX;
-  double ymax = DBL_MIN, ymin = DBL_MAX;
-  double zmax = DBL_MIN, zmin = DBL_MAX;
+void normalize(vector< point_t > &v);
 
-  /*
+int main(int argc, char **argv) {
+ /*
    * Parsiranje datoteke
    */
   ifstream objekt, postavke;
@@ -112,13 +107,6 @@ int main(int argc, char **argv) {
       point_t T = point_t(x, y, z, 1.);
       vrh.push_back(T);
 
-      xmin = min(xmin, x);
-      ymin = min(ymin, y);
-      zmin = min(zmin, z);
-      xmax = max(xmax, x);
-      ymax = max(ymax, y);
-      zmax = max(zmax, z);
-
     } else if (s_buff[0] == "f") {
       //face
       int p1, p2, p3;
@@ -137,7 +125,9 @@ int main(int argc, char **argv) {
   while (getline(postavke, buff)) {
     s_buff = split(buff, " ");
 
-    if (s_buff[0] == "G") {
+    if (s_buff[0] == "#") {
+      // komentar
+    } else if (s_buff[0] == "G") {
       // glediste
       double x, y, z;
       sscanf(s_buff[1].c_str(), "%lf", &x);
@@ -145,6 +135,7 @@ int main(int argc, char **argv) {
       sscanf(s_buff[3].c_str(), "%lf", &z);
 
       G = point_t(x, y, z, 1.);
+
     } else if (s_buff[0] == "O") {
       // ociste
       double x, y, z;
@@ -158,36 +149,6 @@ int main(int argc, char **argv) {
   }
   postavke.close();
 
-  double xsr = (xmin + xmax) / 2.;
-  double ysr = (ymin + ymax) / 2.;
-  double zsr = (zmin + zmax) / 2.;
-
-  double M = max(max(xmax - xmin, ymax - ymin), zmax - zmin);
-
-  // normalizacija
-  // translacija
-  for (
-    vector< point_t >::iterator
-    it = vrh.begin();
-    it != vrh.end();
-    ++it
-  ) {
-    it->setX(it->getX() - xsr);
-    it->setY(it->getY() - ysr);
-    it->setZ(it->getZ() - zsr);
-  }
-  // skaliranje
-  for (
-    vector< point_t >::iterator
-    it = vrh.begin();
-    it != vrh.end();
-    ++it
-  ) {
-    it->setX(2 * it->getX() / M);
-    it->setY(2 * it->getY() / M);
-    it->setZ(2 * it->getZ() / M);
-  }
-
   /*
    * sanity check
    */
@@ -195,28 +156,11 @@ int main(int argc, char **argv) {
   printf("=====================================\n");
   printf("Vrhova: %d, Poligona: %d\n", (int)vrh.size(), (int)poligon.size());
   printf("=====================================\n");
-  printf("xmin %.2lf, xmax %.2lf\n", xmin, xmax);
-  printf("ymin %.2lf, ymax %.2lf\n", ymin, ymax);
-  printf("zmin %.2lf, zmax %.2lf\n", zmin, zmax);
-  printf("xsr %.2lf, ysr %.2lf, zsr %.2lf\n", xsr, ysr, zsr);
-  printf("Maksimalni raspon: %.2lf\n", M);
-  printf("=====================================\n");
 
   printf("Ucitane postavke iz %s\n", argv[2]);
   printf("=====================================\n");
   printf("Glediste: %.2lf %.2lf %.2lf\n", G.getX(), G.getY(), G.getZ());
   printf("Ociste: %.2lf %.2lf %.2lf\n", O.getX(), O.getY(), O.getZ());
-  printf("=====================================\n");
-  printf("Vrhovi normaliziranog poligona\n");
-  printf("=====================================\n");
-  for (
-    vector< point_t >::iterator
-    it = vrh.begin();
-    it != vrh.end();
-    ++it
-  ) {
-      printf("%.2lf %.2lf %.2lf\n", it->getX(), it->getY(), it->getZ());
-  }
   printf("=====================================\n");
 
   /*
@@ -258,12 +202,12 @@ int main(int argc, char **argv) {
 
     G3 = point_t(G2.getX(), G2.getY(), G2.getZ(), G2.getH());
   } else {
-    cosB = G2.getX() / sqrt(pow(G2.getX(), 2) + pow(G2.getZ(), 2));
-    sinB = G2.getZ() / sqrt(pow(G2.getX(), 2) + pow(G2.getZ(), 2));
+    cosB = G2.getZ() / sqrt(pow(G2.getX(), 2) + pow(G2.getZ(), 2));
+    sinB = G2.getX() / sqrt(pow(G2.getX(), 2) + pow(G2.getZ(), 2));
 
     G3 = point_t(0, 0, sqrt(pow(G2.getX(), 2) + pow(G2.getZ(), 2)), 1.);
   }
-  T2[0][0] = cosB;  T3[0][1] = 0; T3[0][2] = sinB; T2[0][3] = 0;
+  T3[0][0] = cosB;  T3[0][1] = 0; T3[0][2] = sinB; T3[0][3] = 0;
   T3[1][0] = 0;     T3[1][1] = 1; T3[1][2] = 0;    T3[1][3] = 0;
   T3[2][0] = -sinB; T3[2][1] = 0; T3[2][2] = cosB; T3[2][3] = 0;
   T3[3][0] = 0;     T3[3][1] = 0; T3[3][2] = 0;    T3[3][3] = 1;
@@ -290,7 +234,7 @@ int main(int argc, char **argv) {
   // matrica projekcije
   P1[0][0] = 1; P1[0][1] = 0; P1[0][2] = 0; P1[0][3] = 0;
   P1[1][0] = 0; P1[1][1] = 1; P1[1][2] = 0; P1[1][3] = 0;
-  P1[2][0] = 0; P1[2][1] = 0; P1[2][2] = 0; P1[2][3] = 1. / G3.getH();
+  P1[2][0] = 0; P1[2][1] = 0; P1[2][2] = 0; P1[2][3] = 1. / G3.getZ();
   P1[3][0] = 0; P1[3][1] = 0; P1[3][2] = 0; P1[3][3] = 0;
 
   // izracun novih koordinata vrhova
@@ -304,12 +248,15 @@ int main(int argc, char **argv) {
     (*it) = transform(*it, P1);
   }
 
+  // normalizacija
+  normalize(vrh);
+
   // ispis matrica
   printf("Matrice transformacije pogleda\n");
   printf("=====================================\n");
   for (int i = 0; i < 4; ++i) {
     for (int j = 0; j < 4; ++j) {
-      printf("%.2lf ", mTrans[i][j]);
+      printf("%.3lf ", mTrans[i][j]);
     }
     printf("\n");
   }
@@ -318,10 +265,24 @@ int main(int argc, char **argv) {
   printf("=====================================\n");
   for (int i = 0; i < 4; ++i) {
     for (int j = 0; j < 4; ++j) {
-      printf("%.2lf ", P1[i][j]);
+      printf("%.3lf ", P1[i][j]);
     }
     printf("\n");
   }
+
+  printf("=====================================\n");
+  printf("Vrhovi poligona\n");
+  printf("=====================================\n");
+  for (
+    vector< point_t >::iterator
+    it = vrh.begin();
+    it != vrh.end();
+    ++it
+  ) {
+      // printf("%.2lf %.2lf %.2lf\n", it->getX(), it->getY(), it->getZ());
+  }
+  printf("=====================================\n");
+
 
   /*
    * Inicijalizacija GLUT-a
@@ -420,4 +381,59 @@ point_t transform(point_t t, double M[4][4]) {
   }
 
   return result;
+}
+
+void normalize(vector< point_t > &v) {
+  /*
+   * Vrijednosti potrebne za rad
+   */
+  double xmax = DBL_MIN, xmin = DBL_MAX;
+  double ymax = DBL_MIN, ymin = DBL_MAX;
+  double zmax = DBL_MIN, zmin = DBL_MAX;
+  for (
+    vector< point_t >::iterator
+    it = vrh.begin();
+    it != vrh.end();
+    ++it
+  ) {
+    xmax = max(xmax, it->getX());
+    xmin = min(xmin, it->getX());
+    ymax = max(ymax, it->getY());
+    ymin = min(ymin, it->getY());
+    zmax = max(zmax, it->getZ());
+    zmin = min(zmin, it->getZ());
+  }
+
+
+  double xsr = (xmin + xmax) / 2.;
+  double ysr = (ymin + ymax) / 2.;
+  double zsr = (zmin + zmax) / 2.;
+
+  double M = max(max(xmax - xmin, ymax - ymin), zmax - zmin);
+
+  // normalizacija
+  // translacija
+  for (
+      vector< point_t >::iterator
+      it = vrh.begin();
+      it != vrh.end();
+      ++it
+  ) {
+    it->setX(it->getX() - xsr);
+    it->setY(it->getY() - ysr);
+    it->setZ(it->getZ() - zsr);
+  }
+  // skaliranje
+  for (
+      vector< point_t >::iterator
+      it = vrh.begin();
+      it != vrh.end();
+      ++it
+  ) {
+    it->setX(2 * it->getX() / M);
+    it->setY(2 * it->getY() / M);
+    it->setZ(2 * it->getZ() / M);
+  }
+
+  return;
 }
