@@ -34,7 +34,6 @@ class point_t {
 class poly_t {
   private:
     int p1, p2, p3;
-    double A, B, C, D;
 
   public:
     poly_t() {}
@@ -44,11 +43,6 @@ class poly_t {
     int getP1() {return p1;}
     int getP2() {return p2;}
     int getP3() {return p3;}
-
-    void setA(double _A) {A = _A;}
-    void setB(double _B) {B = _B;}
-    void setC(double _C) {C = _C;}
-    void setD(double _D) {D = _D;}
 };
 
 /*
@@ -213,7 +207,7 @@ int main(int argc, char **argv) {
   T3[3][0] = 0;     T3[3][1] = 0; T3[3][2] = 0;    T3[3][3] = 1;
 
   // T4 rotacija za kut 90 oko z osi
-  T4[0][0] = 0; T4[0][1] = -1; T4[0][2] = 0; T2[0][3] = 0;
+  T4[0][0] = 0; T4[0][1] = -1; T4[0][2] = 0; T4[0][3] = 0;
   T4[1][0] = 1; T4[1][1] = 0;  T4[1][2] = 0; T4[1][3] = 0;
   T4[2][0] = 0; T4[2][1] = 0;  T4[2][2] = 1; T4[2][3] = 0;
   T4[3][0] = 0; T4[3][1] = 0;  T4[3][2] = 0; T4[3][3] = 1;
@@ -279,7 +273,7 @@ int main(int argc, char **argv) {
     it != vrh.end();
     ++it
   ) {
-      // printf("%.2lf %.2lf %.2lf\n", it->getX(), it->getY(), it->getZ());
+     printf("%.2lf %.2lf %.2lf\n", it->getX(), it->getY(), it->getZ());
   }
   printf("=====================================\n");
 
