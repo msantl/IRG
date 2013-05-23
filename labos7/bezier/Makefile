@@ -1,5 +1,5 @@
-PROJECT = labos8
-SOURCE = mojlib.cpp vjezba8.cpp
+PROJECT = labos7
+SOURCE = mojlib.cpp vjezba7.cpp
 
 CC = g++ 
 CFLAGS = -Wall -g -c
