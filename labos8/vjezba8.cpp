@@ -121,7 +121,7 @@ int main(int argc, char **argv) {
   /*
    * Parsiranje datoteke
    */
-  ifstream objekt, postavke;
+  ifstream objekt;
   string buff;
   vector< string > s_buff;
 
