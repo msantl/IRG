@@ -319,11 +319,11 @@ void konstantnoSjencanjePrikaz() {
     double I = izracunajIntenzitet(no, iz);
 
     glBegin(GL_TRIANGLES);
-    glColor3ub(I, 0, 0);
+    glColor3ub(I, I/2, I);
     glVertex3f(vrh[it->getP1()].getX(), vrh[it->getP1()].getY(), vrh[it->getP1()].getZ());
-    glColor3ub(I, 0, 0);
+    glColor3ub(I, I/2, I);
     glVertex3f(vrh[it->getP2()].getX(), vrh[it->getP2()].getY(), vrh[it->getP2()].getZ());
-    glColor3ub(I, 0, 0);
+    glColor3ub(I, I/2, I);
     glVertex3f(vrh[it->getP3()].getX(), vrh[it->getP3()].getY(), vrh[it->getP3()].getZ());
     glEnd();
   }
@@ -363,11 +363,11 @@ void gouraudovoSjencanjePrikaz() {
     double I3 = izracunajIntenzitet(no3, iz);
 
     glBegin(GL_TRIANGLES);
-    glColor3ub(I1, 0, 0);
+    glColor3ub(I1, I1/2, I1);
     glVertex3f(vrh[it->getP1()].getX(), vrh[it->getP1()].getY(), vrh[it->getP1()].getZ());
-    glColor3ub(I2, 0, 0);
+    glColor3ub(I2, I2/2, I2);
     glVertex3f(vrh[it->getP2()].getX(), vrh[it->getP2()].getY(), vrh[it->getP2()].getZ());
-    glColor3ub(I3, 0, 0);
+    glColor3ub(I3, I3/2, I3);
     glVertex3f(vrh[it->getP3()].getX(), vrh[it->getP3()].getY(), vrh[it->getP3()].getZ());
     glEnd();
   }
