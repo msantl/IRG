@@ -250,11 +250,7 @@ void display() {
 void reshape(int w, int h) {
   width = w; height = h;
   glViewport(0, 0, (GLsizei)width, (GLsizei)height);
-  glMatrixMode(GL_PROJECTION);
-  glLoadIdentity();
-	gluPerspective(45.0, (float)width/height, 0.5, 8.0);
-	gluLookAt (ociste.getX(), ociste.getY(), ociste.getZ(), 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
-	glMatrixMode (GL_MODELVIEW);
+  updatePerspective();
 }
 
 void zicaniPrikaz() {
@@ -450,10 +446,10 @@ void normalize(vector< point_t > &v) {
 
   // translacija
   for (
-      vector< point_t >::iterator
-      it = v.begin();
-      it != v.end();
-      ++it
+    vector< point_t >::iterator
+    it = v.begin();
+    it != v.end();
+    ++it
   ) {
     it->setX(it->getX() - xsr);
     it->setY(it->getY() - ysr);
@@ -461,10 +457,10 @@ void normalize(vector< point_t > &v) {
   }
   // skaliranje
   for (
-      vector< point_t >::iterator
-      it = v.begin();
-      it != v.end();
-      ++it
+    vector< point_t >::iterator
+    it = v.begin();
+    it != v.end();
+    ++it
   ) {
     it->setX(2 * it->getX() / M);
     it->setY(2 * it->getY() / M);
