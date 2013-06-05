@@ -293,11 +293,11 @@ void konstantnoSjencanjePrikaz() {
    * Konstantno sjencanje uz uklanjanje straznjih poligona
    */
   for (
-      vector< poly_t >::iterator
-      it = poligon.begin();
-      it != poligon.end();
-      ++it
-      ) {
+    vector< poly_t >::iterator
+    it = poligon.begin();
+    it != poligon.end();
+    ++it
+  ) {
     /*
      * ukloni straznje poligone
      */
@@ -336,11 +336,11 @@ void gouraudovoSjencanjePrikaz() {
    * Gouraudovo sjencanje  uz uklanjanje straznjih poligona
    */
   for (
-      vector< poly_t >::iterator
-      it = poligon.begin();
-      it != poligon.end();
-      ++it
-      ) {
+    vector< poly_t >::iterator
+    it = poligon.begin();
+    it != poligon.end();
+    ++it
+  ) {
     /*
      * ukloni straznje poligone
      */
