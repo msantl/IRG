@@ -1,0 +1,150 @@
+\documentclass{report}
+
+\usepackage[croatian]{babel}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+
+\author{Matija Šantl}
+\title{Interaktivna računalna grafika - dokumentacija}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\chapter{1. laboratorijska vježba}
+Prvu laboratorijsku vježbu sam radio prema B uputama za izradu laboratorijskih vježbi. Kao jezik ostvarenja rješenja danih zadataka odabrao sam \textit{C++}. Vrijeme uloženo u ostvarenje ove laboratorijske vježbe je oko 10 sati. 
+
+\section{Zadatak 1. - Izrada pomoćne biblioteke}
+
+\subsection{Kratak opis programa / međusobna povezanost}
+Prvi zadatak s kojim smo se susreli na laboratorijskim vježbama je bila izrada pomoćne biblioteke. Pomoćna biblioteka se sastoji od više razreda koji nam omogućavaju lakši programski zapis izračuna operacija s vektorima i matricama.
+
+Razredi koji su ostvareni u sklopu ove vježbu su \textit{IVector}, \textit{AbstractVector}, \textit{Vector}, \textit{IMatrix}, \textit{MatrixTransposeView}, \textit{MatrixSubmatrixView}, \textit{AbstractMatrix}, \textit{Matrix}, \textit{MatrixVectorView}, \textit{VectorMatrixView}.
+
+Svaki je razred ostvaren u vlastitoj datoteci zaglavlja, te je za funkcionalnost pojedinog razreda potrebno samo uključiti odgovarajuću datoteku zaglavlja.
+
+\subsection{Promjene načinjene s obzirom na upute}
+Budući da je priprema za labos dana u obliku dijagrama razreda uz detaljne opise zadaća pojedinih metoda razreda, u ovoj vježbi nisu načinjene promjene s obzirom na upute.
+
+\subsection{Korištene strukutre podataka}
+Strukture podataka koje su korištene u ovom zadatku su ujedno i sam zadatak kojeg je trebalo ostvariti.
+
+\subsection{Upute za korištenje programa}
+Nakon ostvarenja svih potrebna razreda, za provjeru ispravnosti istih, napisan je program koji na nekoliko primjera pokazuje rezultate izračuna unutar područja linearne algebre. Za potrebe kompilacije izvornog koda, napisana je \textit{Makefile} datoteka koja automatizira proces kompilacije više datoteka u jednu izvršnu datoteku. Kao rezultat rada \textit{Makefile} datoteke dobijemo izvršnu datoteku \textit{labos1} koju možemo pokrenuti i uvjeriti se u ispravnost rada ostvarenih razreda.
+
+\subsection{Komentar rezultata}
+Ovdje razvijena biblioteka je potrebna u daljnjim vježbama te je veoma važno da ona radi ispravno.  Rezultati dobiveni pomoću razvijene biblioteke uspoređeni su s onima koji su ručno izrađeni te nije primjećena nepravilnost.
+ 
+\section{Zadatak 2. - Prvi program u OpenGL-u}
+\subsection{Kratak opis programa / međusobna povezanost}
+Prvi program u OpenGL-u je bio crtanje većeg broja ispunjenih trokuta u odabranoj boji. Program treba pamtiti trnutno aktivnu boju i prikazivati je u gornjem desnom uglu. Zadavanje trokuta u programu se obavlja mišem. Prilikom crtanja trokuta na ekranu, trokuti se crtaju redosljedom kojim su dodavni u listu.
+
+\subsection{Promjene načinjene s obzirom na upute}
+U uputi je zadan program u OpenGL-u kojeg je trebalo modificirati kako bismo ostvarili dani zadatak. Promjene koje su načinjene su u skladu s tekstom zadatka.
+
+\subsection{Korištene strukutre podataka}
+Strukture podataka koje su korištene za ostvarenje zadatka su prilagođene potrebama ovog zadataka, tako se za listu u koju spremamo aktivne trokute koristi strkutura podataka \textit{vector} iz \textit{STL} biblioteke. Dodatne strukture se koriste za spremanje trenutnog stanja programa, koja je boja iscrtavanja, točke trokuta kojeg crtamo itd.
+
+\subsection{Upute za korištenje programa}
+Za potrebe kompilacije izvornog koda, napisana je \textit{Makefile} datoteka koja automatizira proces kompilacije više datoteka u jednu izvršnu datoteku. Kao rezultat rada \textit{Makefile} datoteke dobijemo izvršnu datoteku \textit{labos2}. Pokretanjem izvršne datoteke otvara se prozor   u kojem možemo crtati trokute u nekoj od ponuđenih boja. Zadavanje točaka se vrši pritiskom ljeve tipke miša, te se nakon zadavanja treće točke u trokut spremi u listu zadanih trokuta. Zadavanjem manje od tri točke, pomicanjem miša, iscrtava se ili linija ili trokut koja nam prikazuje kako će izgledati stanje ekrana ako u tom trenutku pritisnemo tipku miša.
+
+\subsection{Komentar rezultata}
+Kao rezultat pokretanja ovog progama možemo crtati trokute u nekoj od ponuđenih boja koje mijenjamo pritiskom na tipke \textit{p} i \textit{n}. Takav program nije kompliciran za ostvariti a stekne se dobar uvid u OpenGL što je potrebno za daljnje vježbe.
+
+\section{Zadatak 3. - Crtanje linija na rasterskim prikaznim jedinicama}
+\subsection{Kratak opis programa / međusobna povezanost}
+Koristeći OpenGL, treba korisniku omogućiti crtanje prozivoljnog broja linija. Korisnik linije zadaje mišem, na način da prvi klik definira početak segmenta a drugi klik kraj segmenta. Dodatno, korisnik može odabrati iscrtavanje kontrolnih linija gotovim funkcijama iz OpenGL-a i/ili aktivirati algoritam odsijecanja linija Cohen Sutherlanda.
+
+\subsection{Promjene načinjene s obzirom na upute}
+U ovom zadatku nisu načinjene promjene s obzirom na tekst uputa.
+
+\subsection{Korištene strukutre podataka}
+Strukture koje su korištene za ostvarenje ovog zadatka su \textit{vector} iz \textit{STL} biblioteke te razredi koji nam olakšavaju pamćenje segmenata koje trebamo crtati.
+
+\subsection{Upute za korištenje programa}
+Za potrebe kompilacije izvornog koda, napisana je \textit{Makefile} datoteka koja automatizira proces kompilacije više datoteka u jednu izvršnu datoteku. Kao rezultat rada \textit{Makefile} datoteke dobijemo izvršnu datoteku \textit{labos3}. Prilikom pokretanja izvršne datoteke otvara se prozor u kojem možemo raditi sljedeće. Klikom miša određujemo rubne točke segmenata koje želimo iscrtati. Tipkom \textit{k} aktiviramo iscrtavanje kontrolne linije koja se iscrtava blago desno u drugoj boji. Tipkom \textit{o} aktiviramo algoritam odsijecanja Cohen Sutherlanda, te se iscrtavaju segmenti koji su dio središnjeg prozora.
+
+\subsection{Komentar rezultata}
+U ovom zadatku je potrebno ostvariti Bresenhamov algoritam crtanja linija. Proučavajuči taj algoritam vidimo koliko je važno da iskoristimo rastersku prirodu računalnih ekrana radi bržeg iscrtavanja. Zanimljivo je vidjeti i pametnu primjenu binarnog kodiranja segmenata tako da se pomoću binarnih operacija lako odredi položaj segmenta s obzirom na prozor u algoritmu Cohen Sutherlanda. 
+
+\chapter{2. laboratorijska vježba}
+Drugu laboratorijsku vježbu sam radio prema B uputama za izradu laboratorijskih vježbi. Kao jezik ostvarenja rješenja danih zadataka odabrao sam \textit{C++}. Vrijeme uloženo u ostvarenje ove laboratorijske vježbe je oko 6 sati. 
+
+\section{Zadatak 4. - Crtanje i popunjavanje poligona}
+\subsection{Kratak opis programa / međusobna povezanost}
+Koristeći OpenGL za crtanje, program treba korisniku omogućiti da mišem definira vrhove poligona i koji će potom korisniku prikazati taj poligon, omogućiti mu da dobije prikaz popunjenog poligona, te omogućiti korisniku da mišem zadaje točke za koje će program u konzolu ispisivati u kakvom je odnosu točka i poligon.
+
+\subsection{Promjene načinjene s obzirom na upute}
+Promjene načinjene s obzirom na upute su vezane uz prijedlog izračuna koeficijenata pravca bridova. Postignut je isti učinak uzimajući indekse pomaknute za jedan.
+
+\subsection{Korištene strukutre podataka}
+Strukture koje su korištene za ostvarenje ovog zadatka su \textit{vector} iz \textit{STL} biblioteke te razredi koji nam olakšavaju rad s poligonima i provjeru odnosa točke i poligona.
+
+\subsection{Upute za korištenje programa}
+Za potrebe kompilacije izvornog koda, napisana je \textit{Makefile} datoteka koja automatizira proces kompilacije više datoteka u jednu izvršnu datoteku. Kao rezultat rada \textit{Makefile} datoteke dobijemo izvršnu datoteku \textit{labos4}. Nakon pokretanja izvršne datoteke otvara nam se prozor u kojem možemo zadavati točke poligona. Zadani poligon tako može biti konveksan ili konkavan. S obzirom na izbor točaka, algoritam punjenja će \textit{dobro} ispuniti poligon ako je on konveksan, inače će se primjetiti neke anomalije. Tipkom \textit{k} mijenjamo vrijednost zastavice konveksnost koja nam omogućava, odnosno onemogućava zadavanje točaka poligona koje bi narušile njegovu konveksnost. Tipkom \textit{p} mijenjamo vrijednost zastavice popunjavanje koja koristeći algoritam za popunjavanje poligona ispuni poligon zadanom bojom. Tipkom \textit{n} radimo ciklički prelazak na sljedeće stanje. Ako smo u stanju 1 omogućeno nam je zadavanje točaka poligona, dok nam je u stanju 2 omogućeno zadavanje ispitnih točaka za koje se provjerava odnos točke i poligona.
+
+\subsection{Komentar rezultata}
+U zadatku je specificiran algoritam koji se koristi za popunjavanje poligona, te se prilikom zadavanja konkavnog poligona mogu primijetiti određene anomalije koje se kod konveksnih poligona ne javljaju. Ispitivanje odnosa točke i poligona također ovisi o prirodi zadanog poligona. Naime, ako je poligon konveksan, ispisivat će se dobri rezultati, ali ako je on konkavan, neki od rezultata će biti pogrešni.
+
+\section{Zadatak 5. - 3D tijela}
+\subsection{Kratak opis programa / međusobna povezanost}
+Program treba pročitati sadržaj \textit{.obj} datoteke i u memoriju učitati definirani model tijela. Za svaki trokut treba izračunati i zapmatiti pripadne koeficijente jednadžbe ravnine. Porgram treba potom korisniku omogućiti da interaktivno unosi koordinate točaka u 3D prostoru, te nakon svake unesene točke program treba provjerit iu kakvom su odnosu unesena točka i tijelo te rezultat ispitivanja ispisati na ekran. Također, ako korisnik unese naredbu \textit{normiraj}, na zaslon se u \textit{.obj} formatu ispiše normirani model objekta. 
+
+\subsection{Promjene načinjene s obzirom na upute}
+U ovom zadatku nisu načinjene promjene s obzirom na tekst uputa.
+
+\subsection{Korištene strukutre podataka}
+Strukture koje su korištene za ostvarenje ovog zadatka su \textit{vector} iz \textit{STL} biblioteke te razred \textit{ObjectModel} koji nam služi za spremanje učitanog modela u \textit{.obj} formatu. Razred \textit{ObjectModel} koristi dva pomoćna razreda, \textit{Vertex3D} i \textit{Face3D}.
+
+\subsection{Upute za korištenje programa}
+Za potrebe kompilacije izvornog koda, napisana je \textit{Makefile} datoteka koja automatizira proces kompilacije više datoteka u jednu izvršnu datoteku. Kao rezultat rada \textit{Makefile} datoteke dobijemo izvršnu datoteku \textit{labos5}. Pokretanje programa se vrši s argumentom \textit{.obj} datotekom iz koje učitavamo model. Nakon što se model učitao, imamo dvije mogućnosti. Prva je da unosom naredbe \textit{normiraj} na zaslon dobijemo normirani model tijela, a druga je da unesemo točku iz 3D prostora, te na zaslon dobijemo rezultat odnosa točke i tijela (unutar, izvan ili na rubu).
+
+\subsection{Komentar rezultata}
+Ovaj zadatak je dan kao uvod za rad s 3D tijelima. Rezultati ispisa ovise o prirodi modela 3D tijela. Naime, ako je tijelo konkavno, može se dogoditi za neku točku program ispiše pogrešan odnos točke i tijela. Ako je tijelo konveksno, do toga ne bi smijelo doći.
+
+
+\chapter{3. laboratorijska vježba}
+Treću laboratorijsku vježbu sam radio prema A uputama za izradu laboratorijskih vježbi. Kao jezik ostvarenja rješenja danih zadataka odabrao sam \textit{C++}. Vrijeme uloženo u ostvarenje ove laboratorijske vježbe je oko 4 sata. 
+
+\section{Zadatak 6. - Transformacija pogleda i perspektivna projekcija}
+\subsection{Kratak opis programa / međusobna povezanost}
+\subsection{Promjene načinjene s obzirom na upute}
+\subsection{Korištene strukutre podataka}
+\subsection{Upute za korištenje programa}
+Za potrebe kompilacije izvornog koda, napisana je \textit{Makefile} datoteka koja automatizira proces kompilacije više datoteka u jednu izvršnu datoteku. Kao rezultat rada \textit{Makefile} datoteke dobijemo izvršnu datoteku \textit{labos2}.
+
+\subsection{Komentar rezultata}
+
+\section{Zadatak 7. - Krivulja Bezijera}
+\subsection{Kratak opis programa / međusobna povezanost}
+\subsection{Promjene načinjene s obzirom na upute}
+\subsection{Korištene strukutre podataka}
+\subsection{Upute za korištenje programa}
+Za potrebe kompilacije izvornog koda, napisana je \textit{Makefile} datoteka koja automatizira proces kompilacije više datoteka u jednu izvršnu datoteku. Kao rezultat rada \textit{Makefile} datoteke dobijemo izvršnu datoteku \textit{labos2}.
+
+\subsection{Komentar rezultata}
+
+\chapter{4. laboratorijska vježba}
+Četvrtu laboratorijsku vježbu sam radio prema A uputama za izradu laboratorijskih vježbi. Kao jezik ostvarenja rješenja danih zadataka odabrao sam \textit{C++}. Vrijeme uloženo u ostvarenje ove laboratorijske vježbe je oko 4 sata. 
+
+\section{Zadatak 8. - Sjenčanje tijela}
+\subsection{Kratak opis programa / međusobna povezanost}
+\subsection{Promjene načinjene s obzirom na upute}
+\subsection{Korištene strukutre podataka}
+\subsection{Upute za korištenje programa}
+Za potrebe kompilacije izvornog koda, napisana je \textit{Makefile} datoteka koja automatizira proces kompilacije više datoteka u jednu izvršnu datoteku. Kao rezultat rada \textit{Makefile} datoteke dobijemo izvršnu datoteku \textit{labos2}.
+
+\subsection{Komentar rezultata}
+
+\section{Zadatak 9. - Fraktali}
+\subsection{Kratak opis programa / međusobna povezanost}
+\subsection{Promjene načinjene s obzirom na upute}
+\subsection{Korištene strukutre podataka}
+\subsection{Upute za korištenje programa}
+Za potrebe kompilacije izvornog koda, napisana je \textit{Makefile} datoteka koja automatizira proces kompilacije više datoteka u jednu izvršnu datoteku. Kao rezultat rada \textit{Makefile} datoteke dobijemo izvršnu datoteku \textit{labos2}.
+
+\subsection{Komentar rezultata}
+
+
+\end{document}
