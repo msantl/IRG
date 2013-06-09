@@ -16,16 +16,12 @@
 Prvu laboratorijsku vježbu sam radio prema B uputama za izradu laboratorijskih vježbi. Kao jezik ostvarenja rješenja danih zadataka odabrao sam \textit{C++}. Vrijeme uloženo u ostvarenje ove laboratorijske vježbe je oko 10 sati. 
 
 \section{Zadatak 1. - Izrada pomoćne biblioteke}
-
-\subsection{Kratak opis programa / međusobna povezanost}
+\subsection{Kratak opis programa}
 Prvi zadatak s kojim smo se susreli na laboratorijskim vježbama je bila izrada pomoćne biblioteke. Pomoćna biblioteka se sastoji od više razreda koji nam omogućavaju lakši programski zapis izračuna operacija s vektorima i matricama.
 
 Razredi koji su ostvareni u sklopu ove vježbu su \textit{IVector}, \textit{AbstractVector}, \textit{Vector}, \textit{IMatrix}, \textit{MatrixTransposeView}, \textit{MatrixSubmatrixView}, \textit{AbstractMatrix}, \textit{Matrix}, \textit{MatrixVectorView}, \textit{VectorMatrixView}.
 
 Svaki je razred ostvaren u vlastitoj datoteci zaglavlja, te je za funkcionalnost pojedinog razreda potrebno samo uključiti odgovarajuću datoteku zaglavlja.
-
-\subsection{Promjene načinjene s obzirom na upute}
-Budući da je priprema za labos dana u obliku dijagrama razreda uz detaljne opise zadaća pojedinih metoda razreda, u ovoj vježbi nisu načinjene promjene s obzirom na upute.
 
 \subsection{Korištene strukutre podataka}
 Strukture podataka koje su korištene u ovom zadatku su ujedno i sam zadatak kojeg je trebalo ostvariti.
@@ -37,7 +33,7 @@ Nakon ostvarenja svih potrebna razreda, za provjeru ispravnosti istih, napisan j
 Ovdje razvijena biblioteka je potrebna u daljnjim vježbama te je veoma važno da ona radi ispravno.  Rezultati dobiveni pomoću razvijene biblioteke uspoređeni su s onima koji su ručno izrađeni te nije primjećena nepravilnost.
  
 \section{Zadatak 2. - Prvi program u OpenGL-u}
-\subsection{Kratak opis programa / međusobna povezanost}
+\subsection{Kratak opis programa}
 Prvi program u OpenGL-u je bio crtanje većeg broja ispunjenih trokuta u odabranoj boji. Program treba pamtiti trnutno aktivnu boju i prikazivati je u gornjem desnom uglu. Zadavanje trokuta u programu se obavlja mišem. Prilikom crtanja trokuta na ekranu, trokuti se crtaju redosljedom kojim su dodavni u listu.
 
 \subsection{Promjene načinjene s obzirom na upute}
@@ -53,11 +49,8 @@ Za potrebe kompilacije izvornog koda, napisana je \textit{Makefile} datoteka koj
 Kao rezultat pokretanja ovog progama možemo crtati trokute u nekoj od ponuđenih boja koje mijenjamo pritiskom na tipke \textit{p} i \textit{n}. Takav program nije kompliciran za ostvariti a stekne se dobar uvid u OpenGL što je potrebno za daljnje vježbe.
 
 \section{Zadatak 3. - Crtanje linija na rasterskim prikaznim jedinicama}
-\subsection{Kratak opis programa / međusobna povezanost}
+\subsection{Kratak opis programa}
 Koristeći OpenGL, treba korisniku omogućiti crtanje prozivoljnog broja linija. Korisnik linije zadaje mišem, na način da prvi klik definira početak segmenta a drugi klik kraj segmenta. Dodatno, korisnik može odabrati iscrtavanje kontrolnih linija gotovim funkcijama iz OpenGL-a i/ili aktivirati algoritam odsijecanja linija Cohen Sutherlanda.
-
-\subsection{Promjene načinjene s obzirom na upute}
-U ovom zadatku nisu načinjene promjene s obzirom na tekst uputa.
 
 \subsection{Korištene strukutre podataka}
 Strukture koje su korištene za ostvarenje ovog zadatka su \textit{vector} iz \textit{STL} biblioteke te razredi koji nam olakšavaju pamćenje segmenata koje trebamo crtati.
@@ -72,7 +65,7 @@ U ovom zadatku je potrebno ostvariti Bresenhamov algoritam crtanja linija. Prou�
 Drugu laboratorijsku vježbu sam radio prema B uputama za izradu laboratorijskih vježbi. Kao jezik ostvarenja rješenja danih zadataka odabrao sam \textit{C++}. Vrijeme uloženo u ostvarenje ove laboratorijske vježbe je oko 6 sati. 
 
 \section{Zadatak 4. - Crtanje i popunjavanje poligona}
-\subsection{Kratak opis programa / međusobna povezanost}
+\subsection{Kratak opis programa}
 Koristeći OpenGL za crtanje, program treba korisniku omogućiti da mišem definira vrhove poligona i koji će potom korisniku prikazati taj poligon, omogućiti mu da dobije prikaz popunjenog poligona, te omogućiti korisniku da mišem zadaje točke za koje će program u konzolu ispisivati u kakvom je odnosu točka i poligon.
 
 \subsection{Promjene načinjene s obzirom na upute}
@@ -88,11 +81,8 @@ Za potrebe kompilacije izvornog koda, napisana je \textit{Makefile} datoteka koj
 U zadatku je specificiran algoritam koji se koristi za popunjavanje poligona, te se prilikom zadavanja konkavnog poligona mogu primijetiti određene anomalije koje se kod konveksnih poligona ne javljaju. Ispitivanje odnosa točke i poligona također ovisi o prirodi zadanog poligona. Naime, ako je poligon konveksan, ispisivat će se dobri rezultati, ali ako je on konkavan, neki od rezultata će biti pogrešni.
 
 \section{Zadatak 5. - 3D tijela}
-\subsection{Kratak opis programa / međusobna povezanost}
+\subsection{Kratak opis programa}
 Program treba pročitati sadržaj \textit{.obj} datoteke i u memoriju učitati definirani model tijela. Za svaki trokut treba izračunati i zapmatiti pripadne koeficijente jednadžbe ravnine. Porgram treba potom korisniku omogućiti da interaktivno unosi koordinate točaka u 3D prostoru, te nakon svake unesene točke program treba provjerit iu kakvom su odnosu unesena točka i tijelo te rezultat ispitivanja ispisati na ekran. Također, ako korisnik unese naredbu \textit{normiraj}, na zaslon se u \textit{.obj} formatu ispiše normirani model objekta. 
-
-\subsection{Promjene načinjene s obzirom na upute}
-U ovom zadatku nisu načinjene promjene s obzirom na tekst uputa.
 
 \subsection{Korištene strukutre podataka}
 Strukture koje su korištene za ostvarenje ovog zadatka su \textit{vector} iz \textit{STL} biblioteke te razred \textit{ObjectModel} koji nam služi za spremanje učitanog modela u \textit{.obj} formatu. Razred \textit{ObjectModel} koristi dva pomoćna razreda, \textit{Vertex3D} i \textit{Face3D}.
@@ -103,48 +93,65 @@ Za potrebe kompilacije izvornog koda, napisana je \textit{Makefile} datoteka koj
 \subsection{Komentar rezultata}
 Ovaj zadatak je dan kao uvod za rad s 3D tijelima. Rezultati ispisa ovise o prirodi modela 3D tijela. Naime, ako je tijelo konkavno, može se dogoditi za neku točku program ispiše pogrešan odnos točke i tijela. Ako je tijelo konveksno, do toga ne bi smijelo doći.
 
-
 \chapter{3. laboratorijska vježba}
 Treću laboratorijsku vježbu sam radio prema A uputama za izradu laboratorijskih vježbi. Kao jezik ostvarenja rješenja danih zadataka odabrao sam \textit{C++}. Vrijeme uloženo u ostvarenje ove laboratorijske vježbe je oko 4 sata. 
 
 \section{Zadatak 6. - Transformacija pogleda i perspektivna projekcija}
-\subsection{Kratak opis programa / međusobna povezanost}
-\subsection{Promjene načinjene s obzirom na upute}
+\subsection{Kratak opis programa}
+Program kao ulaz prima model 3D tijela u \textit{.obj} formatu. Nad zadanim je modelom potrebno načiniti transformaciju pogleda i perspektivnu projekciju te iscrtati dobiveni poligon.
+
 \subsection{Korištene strukutre podataka}
+Strukture podataka koje su korištene u ovom zadatku su \textit{vector} iz \textit{STL} biblioteke, razred \textit{Matrix} sa pripadnim metodama radi lakšeg zapisa prilikom računanja transformacija i projekcija.
+
 \subsection{Upute za korištenje programa}
-Za potrebe kompilacije izvornog koda, napisana je \textit{Makefile} datoteka koja automatizira proces kompilacije više datoteka u jednu izvršnu datoteku. Kao rezultat rada \textit{Makefile} datoteke dobijemo izvršnu datoteku \textit{labos2}.
+Za potrebe kompilacije izvornog koda, napisana je \textit{Makefile} datoteka koja automatizira proces kompilacije više datoteka u jednu izvršnu datoteku. Kao rezultat rada \textit{Makefile} datoteke dobijemo izvršnu datoteku \textit{labos6}. Program kao argumente naredbenog retka prima dvije datoteke. Prva je \textit{.obj} formatirana datoteka u kojoj je opisan 3D model tijela dok druga datoteka sadrži dvije točke, točku očišta i točku gledišta. Nakon pokretanja programa sa danim nazivima datoteka, u otovrenom se prozoru iscrta poligon koji nastaje transformacijom pogleda i perspektivnom projekcijom zadanog 3D modela tijela.
 
 \subsection{Komentar rezultata}
+Rezultat ovog zadatka je poligon koji nastaje primjenom transformacije pogleda i perspektivne projekcije zadanog 3D modela tijela. Prilikom zadavanja točke očišta moramo paziti da je ne zadamo u unutrašnjosti objekta.
 
 \section{Zadatak 7. - Krivulja Bezijera}
-\subsection{Kratak opis programa / međusobna povezanost}
-\subsection{Promjene načinjene s obzirom na upute}
+\subsection{Kratak opis programa}
+Zadatak 7 je proširenje prethodnog zadataka u pogledu što točka očišta nije ista kad jednom pokrenemo program, već ju možemo mijenjati tijekom izvođenja programa. Točka očišta se kreće po zadanoj Bezierovoj krivulji koja se pak određuje iz točaka koje zadamo prilikom pokretanja programa. 
+
 \subsection{Korištene strukutre podataka}
+U zadatku 7 su korištene iste strukture podataka kao i u prethodnom zadatku.
+
 \subsection{Upute za korištenje programa}
-Za potrebe kompilacije izvornog koda, napisana je \textit{Makefile} datoteka koja automatizira proces kompilacije više datoteka u jednu izvršnu datoteku. Kao rezultat rada \textit{Makefile} datoteke dobijemo izvršnu datoteku \textit{labos2}.
+Za potrebe kompilacije izvornog koda, napisana je \textit{Makefile} datoteka koja automatizira proces kompilacije više datoteka u jednu izvršnu datoteku. Kao rezultat rada \textit{Makefile} datoteke dobijemo izvršnu datoteku \textit{labos7}. Program uz ulaze iz prethodnog zadatka prima i točke iz kojih se računa Bezierova krivulja. Nakon pokretanja programa sa danima nazivima datoteka, u otvorenom se prozoru iscrtava poligon koji nastaje transformacijom pogleda i perspektivnom projekcijom zadanog 3D modela tijela s obizrom na točku očišta. Točku očišta pomičemo po Bezierovoj krivulji pritiskom na tipku \textit{j} kako bismo povećali parametar \textit{t} ili pritiskom na tipku \textit{k} kako bismo smanjili parametar \textit{t}.
 
 \subsection{Komentar rezultata}
+Rezultat je sličan onom dobivenom u prethodnom zadatku samo što pritiskom na tipke \textit{t} i \textit{k} možemo pomicati položaj očišta a time i izgled iscrtanog poligona.
 
 \chapter{4. laboratorijska vježba}
 Četvrtu laboratorijsku vježbu sam radio prema A uputama za izradu laboratorijskih vježbi. Kao jezik ostvarenja rješenja danih zadataka odabrao sam \textit{C++}. Vrijeme uloženo u ostvarenje ove laboratorijske vježbe je oko 4 sata. 
 
 \section{Zadatak 8. - Sjenčanje tijela}
-\subsection{Kratak opis programa / međusobna povezanost}
-\subsection{Promjene načinjene s obzirom na upute}
+\subsection{Kratak opis programa}
+Potrebno je učitati 3D model tijela i uz različite načine sjenčanja i uklanjanje stražnjih poligona iscrtati dobivenu sliku. Za potrebe transformacije pogleda i perspektivne projekcije koristimo OpenGL funkcije. 
+
 \subsection{Korištene strukutre podataka}
+Strukture koje su korištene za ostvarenje ovog zadatka su \textit{vector} iz \textit{STL} biblioteke te razredi u koje spremamo točke i poligone.
+
 \subsection{Upute za korištenje programa}
-Za potrebe kompilacije izvornog koda, napisana je \textit{Makefile} datoteka koja automatizira proces kompilacije više datoteka u jednu izvršnu datoteku. Kao rezultat rada \textit{Makefile} datoteke dobijemo izvršnu datoteku \textit{labos2}.
+Za potrebe kompilacije izvornog koda, napisana je \textit{Makefile} datoteka koja automatizira proces kompilacije više datoteka u jednu izvršnu datoteku. Kao rezultat rada \textit{Makefile} datoteke dobijemo izvršnu datoteku \textit{labos8}. Program kao argument prima naziv datoteke koja sadrži model 3D modela tijela u \textit{.obj} formatu. Nakon pokretanja programa prikazuje se žičana forma danog 3D modela uz aktiviarano uklanjanje stražnjih poligona. Pritiskom na tipku  \textit{p} mijenjano način prikaza. Dostupni načini prikaza su prikaz tijela uz konstantno sjenčanje i prikaz tijela uz Gouraudovo sjenčanje. Pritiskom na tipku \textit{l} pomičemo očište po x-osi za 0.1. Pritiskom na tipku \textit{h} pomičemo očište po x-osi za -0.1. Pritiskom na tipku \textit{j} pomičemo očište po y-osi za 0.1. Pritiskom na tipku \textit{k} pomičemo očište po y-osi za -0.1.
 
 \subsection{Komentar rezultata}
+Program sadrži više načina prikaza te je time i dosta efektan. Žičana forma nam daje dobar prikaz o radu algoritma uklanjanje stražnjih poligona. Usporedba konstatnog i Gouraudovog sječanja pak pokazuje razliku koju donosi malo složeniji račun na prikaz osvjetljenja tijela.
 
 \section{Zadatak 9. - Fraktali}
-\subsection{Kratak opis programa / međusobna povezanost}
+\subsection{Kratak opis programa}
+Potrebno je nacrtati Mandelbrotov i Julijev skup za točke kompleksne ravnine koje odgovaraju točkama prozora u kojem crtamo. 
+
 \subsection{Promjene načinjene s obzirom na upute}
+Kako je zadatak 9. preuzet iz A verzije laboratorijskih vježbi, funkcija koja određuje boju na temelju brzine divergencije je preuzeta iz B verzije laboratorijskih vježbi.
+
 \subsection{Korištene strukutre podataka}
+Korištena je struktura podataka koja predstavlja kompleksne brojeve radi lakšeg zapisa operacija na kompleksim brojevima u programu.
+
 \subsection{Upute za korištenje programa}
-Za potrebe kompilacije izvornog koda, napisana je \textit{Makefile} datoteka koja automatizira proces kompilacije više datoteka u jednu izvršnu datoteku. Kao rezultat rada \textit{Makefile} datoteke dobijemo izvršnu datoteku \textit{labos2}.
+Za potrebe kompilacije izvornog koda, napisana je \textit{Makefile} datoteka koja automatizira proces kompilacije više datoteka u jednu izvršnu datoteku. Kao rezultat rada \textit{Makefile} datoteke dobijemo izvršnu datoteku \textit{labos9}. Nakon pokretanja programa od korisnika se zahtjeva da unese parametre koji određuju fraktale. Nakon toga se prikazuje Mandelbrotov skup te se pritiskom na tipku \textit{p} možemo prebacivati između prikaza Julijevog i Mandelbrotovg skupa.
 
 \subsection{Komentar rezultata}
-
+Program iscrtava fraktale, matematičke umotvorine. Umjesto dosadnog crno-bijelog bojanja u ovisnosti o konvergenciji, odnosno divergenciji točke korišteno je bojanje koje u obzir uzima brzinu divergencije te je time postignut efektniji prikaz.
 
 \end{document}
