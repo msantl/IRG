@@ -12,14 +12,11 @@ nadolazece laboratorijske vjezbe.
 * IVector - sucelje prema AbstractVector
 * AbstractVector - apstraktni razred vektora kojeg implementira razred Vector
 * Vector - konkretni razred vektora
-
-* IMatrix - sucelje prema MatrixTransposeView, MatrixSubMatrixView i
-AbstractMatrix razredima
+* IMatrix - sucelje prema MatrixTransposeView, MatrixSubMatrixView i AbstractMatrix razredima
 * MatrixTransposeView - transponirama matrica
 * MatrixSubMatrixView - podmatrica
 * AbstractMatrix - apstraktni razred matrice kojeg implementira razred Matrix
 * Matrix - konrektni razred matrice
-
 * MatrixVectorView - pogled na vektor preko matrice
 * VectorMatrixView - pogled na matricu preko vektora
 
@@ -31,3 +28,27 @@ Crtanje trokuta kojemu mozemo birati boju koristeci GLUT
 
 Crtanje linije pomocu Bresenhamovog algoritma te prikaz odsjecenih linija pomocu
 Cohen Sutherlandovog algoritma
+
+### 4. zadatak
+
+Crtanje i popunjavanje poligona
+
+### 5. zadatak
+
+3D tijela
+
+### 6. zadatak
+
+Transformacija pogleda i perspektivna projekcija
+
+### 7. zadatak
+
+Krivulja Bezijera
+
+### 8. zadatak
+
+Sjencanje tijela
+
+### 9. zadatak
+
+Fraktali
