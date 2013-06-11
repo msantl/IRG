@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/MacPorts 2012_6) (format=pdflatex 2012.11.3)  9 JUN 2013 23:12
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/MacPorts 2012_6) (format=pdflatex 2012.11.3)  11 JUN 2013 01:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -9,25 +9,102 @@ Babel <v3.8m> and hyphenation patterns for english, dumylang, nohyphenation, cz
 ech, slovak, dutch, ukenglish, usenglishmax, basque, french, german-x-2012-05-3
 0, ngerman-x-2012-05-30, german, ngerman, swissgerman, italian, polish, portugu
 ese, spanish, catalan, galician, loaded.
-(/opt/local/share/texmf-texlive-dist/tex/latex/base/report.cls
-Document Class: report 2007/10/19 v1.4h Standard LaTeX document class
-(/opt/local/share/texmf-texlive-dist/tex/latex/base/size10.clo
-File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+(/opt/local/share/texmf-texlive-dist/tex/latex/koma-script/scrbook.cls
+Document Class: scrbook 2012/05/15 v3.11 KOMA-Script document class (book)
+(/opt/local/share/texmf-texlive-dist/tex/latex/koma-script/scrkbase.sty
+Package: scrkbase 2012/05/15 v3.11 KOMA-Script package (KOMA-Script-dependent b
+asics and keyval usage)
+
+(/opt/local/share/texmf-texlive-dist/tex/latex/koma-script/scrbase.sty
+Package: scrbase 2012/05/15 v3.11 KOMA-Script package (KOMA-Script-independent 
+basics and keyval usage)
+
+(/opt/local/share/texmf-texlive-dist/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks14
 )
-\c@part=\count79
-\c@chapter=\count80
-\c@section=\count81
-\c@subsection=\count82
-\c@subsubsection=\count83
-\c@paragraph=\count84
-\c@subparagraph=\count85
-\c@figure=\count86
-\c@table=\count87
-\abovecaptionskip=\skip41
-\belowcaptionskip=\skip42
+(/opt/local/share/texmf-texlive-dist/tex/latex/koma-script/scrlfile.sty
+Package: scrlfile 2011/03/09 v3.09 KOMA-Script package (loading files)
+
+Package scrlfile, 2011/03/09 v3.09 KOMA-Script package (loading files)
+                  Copyright (C) Markus Kohm
+
+))) (/opt/local/share/texmf-texlive-dist/tex/latex/koma-script/tocbasic.sty
+Package: tocbasic 2012/04/04 v3.10b KOMA-Script package (handling toc-files)
+)
+Package tocbasic Info: omitting babel extension for `toc'
+(tocbasic)             because of feature `nobabel' available
+(tocbasic)             for `toc' on input line 117.
+Package tocbasic Info: omitting babel extension for `lof'
+(tocbasic)             because of feature `nobabel' available
+(tocbasic)             for `lof' on input line 118.
+Package tocbasic Info: omitting babel extension for `lot'
+(tocbasic)             because of feature `nobabel' available
+(tocbasic)             for `lot' on input line 119.
+Class scrbook Info: You've used standard option `oneside'.
+(scrbook)           This is correct!
+(scrbook)           Internally I'm using `twoside=false'.
+(scrbook)           If you'd like to set the option with \KOMAoptions,
+(scrbook)           you'd have to use `twoside=false' there
+(scrbook)           instead of `oneside', too.
+Class scrbook Info: File `scrsize11pt.clo' used instead of
+(scrbook)           file `scrsize11.clo' to setup font sizes on input line 1366
+.
+
+(/opt/local/share/texmf-texlive-dist/tex/latex/koma-script/scrsize11pt.clo
+File: scrsize11pt.clo 2012/05/15 v3.11 KOMA-Script font size class option (11pt
+)
+)
+(/opt/local/share/texmf-texlive-dist/tex/latex/koma-script/typearea.sty
+Package: typearea 2012/05/15 v3.11 KOMA-Script package (type area)
+
+Package typearea, 2012/05/15 v3.11 KOMA-Script package (type area)
+                  Copyright (C) Frank Neukam, 1992-1994
+                  Copyright (C) Markus Kohm, 1994-
+
+\ta@bcor=\skip41
+\ta@div=\count79
+Package typearea Info: You've used standard option `oneside'.
+(typearea)             This is correct!
+(typearea)             Internally I'm using `twoside=false'.
+(typearea)             If you'd like to set the option with \KOMAoptions,
+(typearea)             you'd have to use `twoside=false' there
+(typearea)             instead of `oneside', too.
+\ta@hblk=\skip42
+\ta@vblk=\skip43
+\ta@temp=\skip44
+Package typearea Info: These are the values describing the layout:
+(typearea)             DIV  = 10
+(typearea)             BCOR = 0.0pt
+(typearea)             \paperwidth      = 597.50793pt
+(typearea)              \textwidth      = 418.25555pt
+(typearea)              DIV departure   = -6%
+(typearea)              \evensidemargin = 17.3562pt
+(typearea)              \oddsidemargin  = 17.3562pt
+(typearea)             \paperheight     = 845.04694pt
+(typearea)              \textheight     = 595.80026pt
+(typearea)              \topmargin      = -25.16531pt
+(typearea)              \headheight     = 17.0pt
+(typearea)              \headsep        = 20.40001pt
+(typearea)              \topskip        = 11.0pt
+(typearea)              \footskip       = 47.60002pt
+(typearea)              \baselineskip   = 13.6pt
+(typearea)              on input line 1211.
+)
+\c@part=\count80
+\c@chapter=\count81
+\c@section=\count82
+\c@subsection=\count83
+\c@subsubsection=\count84
+\c@paragraph=\count85
+\c@subparagraph=\count86
+\abovecaptionskip=\skip45
+\belowcaptionskip=\skip46
+\c@pti@nb@sid@b@x=\box26
+\c@figure=\count87
+\c@table=\count88
 \bibindent=\dimen102
-)
-(/opt/local/share/texmf-texlive-dist/tex/generic/babel/babel.sty
+) (/opt/local/share/texmf-texlive-dist/tex/generic/babel/babel.sty
 Package: babel 2008/07/08 v3.8m The Babel package
 
 (/opt/local/share/texmf-texlive-dist/tex/generic/babel/croatian.ldf
@@ -35,7 +112,7 @@ Language: croatian 2005/03/29 v1.3l Croatian support from the babel system
 
 (/opt/local/share/texmf-texlive-dist/tex/generic/babel/babel.def
 File: babel.def 2008/07/08 v3.8m Babel common definitions
-\babel@savecnt=\count88
+\babel@savecnt=\count89
 \U@D=\dimen103
 )
 
@@ -50,33 +127,33 @@ Package: ucs 2004/10/17 UCS: Unicode input support
 (/opt/local/share/texmf-texlive-dist/tex/latex/ucs/data/uni-global.def
 File: uni-global.def 2012/04/20 UCS: Unicode global data
 )
-\uc@secondtry=\count89
-\uc@combtoks=\toks14
-\uc@combtoksb=\toks15
-\uc@temptokena=\toks16
+\uc@secondtry=\count90
+\uc@combtoks=\toks15
+\uc@combtoksb=\toks16
+\uc@temptokena=\toks17
 )
 (/opt/local/share/texmf-texlive-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2008/03/30 v1.1d Input encoding file
-\inpenc@prehook=\toks17
-\inpenc@posthook=\toks18
+\inpenc@prehook=\toks18
+\inpenc@posthook=\toks19
 
 (/opt/local/share/texmf-texlive-dist/tex/latex/ucs/utf8x.def
 File: utf8x.def 2004/10/17 UCS: Input encoding UTF-8
 )) (./irg.aux)
 \openout1 = `irg.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
 
 (/opt/local/share/texmf-texlive-dist/tex/latex/ucs/ucsencs.def
 File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
@@ -85,84 +162,72 @@ File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
 File: uni-1.def 2012/04/20 UCS: Unicode data U+0100..U+01FF
 )
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 12.
+(Font)              <14.4> on input line 14.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 12.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 12.
+(Font)              <7> on input line 14.
  [1
+
+
 
 {/opt/local/var/db/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./irg.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 3.
+(Font)              <10.95> on input line 3.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 3.
- [1
+(Font)              <8> on input line 3.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 3.
+ [2
+
 
 ])
 \tf@toc=\write3
 \openout3 = `irg.toc'.
 
- [2]
+ [3]
 Poglavlje 1.
-[3
+[4
 
-]
-Overfull \hbox (12.63966pt too wide) in paragraph at lines 49--50
-\OT1/cmr/m/n/10 Kao rezul-tat pokre-tanja ovog progama mo^^Tzemo cr-tati trokut
-e u nekoj od ponu[]denih
+
+] [5]
+Overfull \hbox (2.30492pt too wide) in paragraph at lines 63--64
+\OT1/cmr/m/n/10.95 U ovom za-datku je potrebno ost-var-iti Bre-sen-hamov al-go-
+ri-tam cr-tanja lin-ija. Prou^^Tcavaju^^Tci
  []
 
-[4]
-Overfull \hbox (5.83409pt too wide) in paragraph at lines 62--63
-\OT1/cmr/m/n/10 Prou^^Tcavaju^^Tci taj al-go-ri-tam vidimo ko-liko je va^^Tzno 
-da isko-ris-timo raster-sku prirodu
- []
-
-[5]
+[6]
 Poglavlje 2.
+[7
 
-Overfull \hbox (2.33412pt too wide) in paragraph at lines 69--70
-\OT1/cmr/m/n/10 definira vrhove polig-ona i koji ^^Sce po-tom ko-ris-niku prika
-zati taj poligon, omogu^^Sciti
- []
 
-[6
-
-] [7] [8]
+] [8]
 Poglavlje 3.
-
-Overfull \hbox (15.80466pt too wide) in paragraph at lines 104--105
-\OT1/cmr/m/n/10 lioteke, razred \OT1/cmr/m/it/10 Ma-trix \OT1/cmr/m/n/10 sa pri
--pad-nim meto-dama radi lak^^Tseg za-pisa pri-likom ra^^Tcunanja
- []
-
 [9
+
 
 ] [10]
 Poglavlje 4.
 [11
 
+
 ] [12] (./irg.aux) ) 
 Here is how much of TeX's memory you used:
- 1444 strings out of 494763
- 17910 string characters out of 3171442
- 73535 words of memory out of 3000000
- 4712 multiletter control sequences out of 15000+200000
- 9453 words of font info for 33 fonts, out of 3000000 for 9000
+ 2547 strings out of 494763
+ 36430 string characters out of 3171442
+ 122447 words of memory out of 3000000
+ 5794 multiletter control sequences out of 15000+200000
+ 9472 words of font info for 33 fonts, out of 3000000 for 9000
  134 hyphenation exceptions out of 8191
- 24i,7n,23p,1124b,575s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 35i,8n,45p,1124b,615s stack positions out of 5000i,500n,10000p,200000b,50000s
 </opt/local/share/texmf-texlive-dist/fonts/type1/public/ams
-fonts/cm/cmbx10.pfb></opt/local/share/texmf-texlive-dist/fonts/type1/public/ams
-fonts/cm/cmbx12.pfb></opt/local/share/texmf-texlive-dist/fonts/type1/public/ams
 fonts/cm/cmr10.pfb></opt/local/share/texmf-texlive-dist/fonts/type1/public/amsf
 onts/cm/cmr12.pfb></opt/local/share/texmf-texlive-dist/fonts/type1/public/amsfo
-nts/cm/cmr17.pfb></opt/local/share/texmf-texlive-dist/fonts/type1/public/amsfon
-ts/cm/cmti10.pfb>
-Output written on irg.pdf (13 pages, 108680 bytes).
+nts/cm/cmsl10.pfb></opt/local/share/texmf-texlive-dist/fonts/type1/public/amsfo
+nts/cm/cmssbx10.pfb></opt/local/share/texmf-texlive-dist/fonts/type1/public/ams
+fonts/cm/cmti10.pfb>
+Output written on irg.pdf (12 pages, 97900 bytes).
 PDF statistics:
- 71 PDF objects out of 1000 (max. 8388607)
- 49 compressed objects within 1 object stream
+ 63 PDF objects out of 1000 (max. 8388607)
+ 43 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

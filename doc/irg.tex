@@ -1,10 +1,11 @@
-\documentclass{report}
+\documentclass[oneside]{scrbook}
 
 \usepackage[croatian]{babel}
 \usepackage{ucs}
 \usepackage[utf8x]{inputenc}
 
-\author{Matija Šantl}
+
+\author{Matija Šantl 0036458898}
 \title{Interaktivna računalna grafika - dokumentacija}
 
 \begin{document}
@@ -12,7 +13,7 @@
 \maketitle
 \tableofcontents
 
-\chapter{1. laboratorijska vježba}
+\chapter{Prva laboratorijska vježba}
 Prvu laboratorijsku vježbu sam radio prema B uputama za izradu laboratorijskih vježbi. Kao jezik ostvarenja rješenja danih zadataka odabrao sam \textit{C++}. Vrijeme uloženo u ostvarenje ove laboratorijske vježbe je oko 10 sati. 
 
 \section{Zadatak 1. - Izrada pomoćne biblioteke}
@@ -61,7 +62,7 @@ Za potrebe kompilacije izvornog koda, napisana je \textit{Makefile} datoteka koj
 \subsection{Komentar rezultata}
 U ovom zadatku je potrebno ostvariti Bresenhamov algoritam crtanja linija. Proučavajuči taj algoritam vidimo koliko je važno da iskoristimo rastersku prirodu računalnih ekrana radi bržeg iscrtavanja. Zanimljivo je vidjeti i pametnu primjenu binarnog kodiranja segmenata tako da se pomoću binarnih operacija lako odredi položaj segmenta s obzirom na prozor u algoritmu Cohen Sutherlanda. 
 
-\chapter{2. laboratorijska vježba}
+\chapter{Druga laboratorijska vježba}
 Drugu laboratorijsku vježbu sam radio prema B uputama za izradu laboratorijskih vježbi. Kao jezik ostvarenja rješenja danih zadataka odabrao sam \textit{C++}. Vrijeme uloženo u ostvarenje ove laboratorijske vježbe je oko 6 sati. 
 
 \section{Zadatak 4. - Crtanje i popunjavanje poligona}
@@ -93,7 +94,7 @@ Za potrebe kompilacije izvornog koda, napisana je \textit{Makefile} datoteka koj
 \subsection{Komentar rezultata}
 Ovaj zadatak je dan kao uvod za rad s 3D tijelima. Rezultati ispisa ovise o prirodi modela 3D tijela. Naime, ako je tijelo konkavno, može se dogoditi za neku točku program ispiše pogrešan odnos točke i tijela. Ako je tijelo konveksno, do toga ne bi smijelo doći.
 
-\chapter{3. laboratorijska vježba}
+\chapter{Treća laboratorijska vježba}
 Treću laboratorijsku vježbu sam radio prema A uputama za izradu laboratorijskih vježbi. Kao jezik ostvarenja rješenja danih zadataka odabrao sam \textit{C++}. Vrijeme uloženo u ostvarenje ove laboratorijske vježbe je oko 4 sata. 
 
 \section{Zadatak 6. - Transformacija pogleda i perspektivna projekcija}
@@ -114,15 +115,15 @@ Rezultat ovog zadatka je poligon koji nastaje primjenom transformacije pogleda i
 Zadatak 7 je proširenje prethodnog zadataka u pogledu što točka očišta nije ista kad jednom pokrenemo program, već ju možemo mijenjati tijekom izvođenja programa. Točka očišta se kreće po zadanoj Bezierovoj krivulji koja se pak određuje iz točaka koje zadamo prilikom pokretanja programa. 
 
 \subsection{Korištene strukutre podataka}
-U zadatku 7 su korištene iste strukture podataka kao i u prethodnom zadatku.
+U zadatku pod brojem 7 su korištene iste strukture podataka kao i u zadatku pod brojem 6.
 
 \subsection{Upute za korištenje programa}
 Za potrebe kompilacije izvornog koda, napisana je \textit{Makefile} datoteka koja automatizira proces kompilacije više datoteka u jednu izvršnu datoteku. Kao rezultat rada \textit{Makefile} datoteke dobijemo izvršnu datoteku \textit{labos7}. Program uz ulaze iz prethodnog zadatka prima i točke iz kojih se računa Bezierova krivulja. Nakon pokretanja programa sa danima nazivima datoteka, u otvorenom se prozoru iscrtava poligon koji nastaje transformacijom pogleda i perspektivnom projekcijom zadanog 3D modela tijela s obizrom na točku očišta. Točku očišta pomičemo po Bezierovoj krivulji pritiskom na tipku \textit{j} kako bismo povećali parametar \textit{t} ili pritiskom na tipku \textit{k} kako bismo smanjili parametar \textit{t}.
 
 \subsection{Komentar rezultata}
-Rezultat je sličan onom dobivenom u prethodnom zadatku samo što pritiskom na tipke \textit{t} i \textit{k} možemo pomicati položaj očišta a time i izgled iscrtanog poligona.
+Rezultat je sličan onom dobivenom u prethodnom zadatku samo što pritiskom na tipke \textit{t} i \textit{k} možemo pomicati položaj očišta a time i izgled iscrtanog poligona. Zbog pomaka točke očišta moguća je učestala pojava poziva izračuna transformacija pogleda i perspektivne projekcije, koji se u ovom zadatku rade s neoptimiziranim funkcijama, zbog čega bi uz složenije 3D modele tijela moglo doći do usporenog rada iscrtavanja. Međutim, za sve dane primjere datoteke \textit{.obj} formata, do usporenog rada prilikom izračuna nije došlo.
 
-\chapter{4. laboratorijska vježba}
+\chapter{Četvrta laboratorijska vježba}
 Četvrtu laboratorijsku vježbu sam radio prema A uputama za izradu laboratorijskih vježbi. Kao jezik ostvarenja rješenja danih zadataka odabrao sam \textit{C++}. Vrijeme uloženo u ostvarenje ove laboratorijske vježbe je oko 4 sata. 
 
 \section{Zadatak 8. - Sjenčanje tijela}
@@ -136,7 +137,7 @@ Strukture koje su korištene za ostvarenje ovog zadatka su \textit{vector} iz \t
 Za potrebe kompilacije izvornog koda, napisana je \textit{Makefile} datoteka koja automatizira proces kompilacije više datoteka u jednu izvršnu datoteku. Kao rezultat rada \textit{Makefile} datoteke dobijemo izvršnu datoteku \textit{labos8}. Program kao argument prima naziv datoteke koja sadrži model 3D modela tijela u \textit{.obj} formatu. Nakon pokretanja programa prikazuje se žičana forma danog 3D modela uz aktiviarano uklanjanje stražnjih poligona. Pritiskom na tipku  \textit{p} mijenjano način prikaza. Dostupni načini prikaza su prikaz tijela uz konstantno sjenčanje i prikaz tijela uz Gouraudovo sjenčanje. Pritiskom na tipku \textit{l} pomičemo očište po x-osi za 0.1. Pritiskom na tipku \textit{h} pomičemo očište po x-osi za -0.1. Pritiskom na tipku \textit{j} pomičemo očište po y-osi za 0.1. Pritiskom na tipku \textit{k} pomičemo očište po y-osi za -0.1.
 
 \subsection{Komentar rezultata}
-Program sadrži više načina prikaza te je time i dosta efektan. Žičana forma nam daje dobar prikaz o radu algoritma uklanjanje stražnjih poligona. Usporedba konstatnog i Gouraudovog sječanja pak pokazuje razliku koju donosi malo složeniji račun na prikaz osvjetljenja tijela.
+Program sadrži više načina prikaza te je time i dosta efektan. Žičana forma nam daje dobar prikaz o radu algoritma uklanjanje stražnjih poligona. Usporedba konstatnog i Gouraudovog sječanja pak pokazuje razliku koju donosi malo složeniji račun na prikaz osvjetljenja tijela. Iako se u programu učestalo računaju transformacije pogleda i perspektivna projekcija, one se računaju pomoću OpenGL-ovih funkcija te izračuni ne usporavaju iscrtavanje koje bi ljudsko oko moglo primjetiti.
 
 \section{Zadatak 9. - Fraktali}
 \subsection{Kratak opis programa}
